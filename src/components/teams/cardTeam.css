@@ -1,0 +1,48 @@
+.card-team {
+	color: var(--white-color);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.card-team-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.card-team-title {
+	text-align: center;
+}
+.card-team-logo {
+	height: 100px;
+	width: 100px;
+}
+.card-team-foot {
+	display: flex;
+	justify-content: space-between;
+}
+
+.button-team {
+	height: 50px;
+	width: 200px;
+	border: 0;
+	border-radius: 5px;
+	margin: 15px 0 10px 0;
+	padding: 10px;
+
+	color: var(--white-color);
+	text-transform: uppercase;
+	background: linear-gradient(
+			-60deg,
+			var(--red-color) 50%,
+			var(--nav_bar-color) 50%
+		)
+		right;
+	background-size: 250%;
+	transition: 0.5s ease-out;
+}
+
+.button-team:hover {
+	background-position: left;
+	border: 1px solid var(--white-color);
+	transform: scale(1.1);
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}

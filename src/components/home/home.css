@@ -1,0 +1,43 @@
+.home-container-teams {
+	background-image: var(--heroe-image-teams);
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100vh;
+}
+.home-container-players {
+	background-image: var(--heroe-image-players);
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100vh;
+}
+
+.home-div-button {
+	background-color: rgba(0, 0, 0, 0.73);
+	min-height: inherit;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.home-button {
+	border: 0;
+	background-color: transparent;
+	text-decoration: none;
+}
+.grow {
+	transition: 0.5s, color 0.1s;
+	-webkit-transition: 0.5s, color 0.1s;
+	-moz-transition: 0.5s, color 0.1s;
+}
+.grow:hover {
+	transform: scale3d(1.5, 1.5, 0.3);
+	-webkit-transform: scale3d(1.5, 1.5, 0.3);
+	-moz-transform: scale3d(1.5, 1.5, 0.3);
+}
+
+.home-h1 {
+	color: var(--white-color);
+	font-size: var(--font-size-h1);
+	font-family: fantasy;
+}

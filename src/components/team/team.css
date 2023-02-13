@@ -1,0 +1,85 @@
+.field-image {
+	margin-top: 200px;
+	height: 529px;
+	width: 900px;
+	background-image: var(--field-american-football);
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+}
+.box {
+	position: absolute;
+	/* background-color: brown; */
+	color: var(--white-color);
+	height: 60px;
+	width: 60px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+.box > h5 {
+	margin: 0;
+	font-size: 0.8rem;
+}
+/* first line */
+.box-1 {
+	top: 120px;
+	left: 360px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+.box-2 {
+	top: 180px;
+	left: 360px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+.box-3 {
+	top: 250px;
+	left: 360px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+.box-4 {
+	top: 320px;
+	left: 360px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+
+/* second line borders */
+.box-5 {
+	top: 100px;
+	left: 300px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+.box-6 {
+	top: 350px;
+	left: 300px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+/* ters line */
+.box-7 {
+	top: 164px;
+	left: 260px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+.box-8 {
+	top: 224px;
+	left: 240px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+.box-9 {
+	top: 280px;
+	left: 260px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+/* lst line */
+.box-10 {
+	top: 170px;
+	left: 180px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
+.box-11 {
+	top: 310px;
+	left: 180px;
+	background-image: url("https://static.www.nfl.com/image/private/t_thumb_squared/f_auto/league/m1fmyihulvtdiav4bwxm");
+}
