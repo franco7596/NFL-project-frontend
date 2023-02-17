@@ -1,14 +1,28 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { successfulGetTeams, errorGetTeams } from "../actions/teamsAction";
+import {
+	successfulGetTeams,
+	errorGetTeams,
+	successfulGetTeamSelected,
+	errorGetTeamSelected,
+} from "../actions/teamsAction";
 // import apiCall from "../../helpers/apiCall";
-import { START_GET_TEAMS } from "../types";
-import { teamType } from "../types/teams/teamsTypeData";
+import { START_GET_TEAMS, START_GET_TEAM_SELECTED } from "../types";
+import {
+	actionSuccessfulGetTeamSelected,
+	teamType,
+} from "../types/teams/teamsTypeData";
 import apiCall from "../../helpers/apiCall";
 
 type responseGetTeams = {
 	status: number;
 	statusText: string;
 	teams: teamType[];
+};
+
+type responseGetTeamSelected = {
+	status: number;
+	statusText: string;
+	team: teamType;
 };
 
 function* getTeams() {
@@ -21,6 +35,20 @@ function* getTeams() {
 	}
 }
 
+function* getTeamSelected(info: actionSuccessfulGetTeamSelected) {
+	try {
+		const player: responseGetTeamSelected = yield call(
+			apiCall,
+			`getTeamById?id= ${info.payload}`
+		);
+		if (player.status !== 200) throw new Error(player.statusText);
+		yield put(successfulGetTeamSelected(player.team));
+	} catch (error) {
+		yield put(errorGetTeamSelected());
+	}
+}
+
 export default function* teams() {
 	yield takeEvery(START_GET_TEAMS, getTeams);
+	yield takeEvery(START_GET_TEAM_SELECTED, getTeamSelected);
 }

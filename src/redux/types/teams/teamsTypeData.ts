@@ -30,16 +30,21 @@ export type teamType = {
 };
 
 type actionStartGetTeams = {
-	type: "START_GET_TEAMS";
-};
-type actionErrorGetTeams = {
-	type: "ERROR_GET_TEAMS";
+	type:
+		| "START_GET_TEAMS"
+		| "START_GET_TEAM_SELECTED"
+		| "ERROR_GET_TEAMS"
+		| "ERROR_GET_TEAM_SELECTED";
 };
 type actionSuccessfulGetTeams = {
 	type: "SUCCESSFUL_GET_TEAMS";
 	payload: teamType[];
 };
+export type actionSuccessfulGetTeamSelected = {
+	type: "SUCCESSFUL_GET_TEAM_SELECTED";
+	payload: teamType;
+};
 export type actionTeamsType =
 	| actionStartGetTeams
-	| actionErrorGetTeams
-	| actionSuccessfulGetTeams;
+	| actionSuccessfulGetTeams
+	| actionSuccessfulGetTeamSelected;

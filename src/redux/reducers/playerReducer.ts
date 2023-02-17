@@ -11,21 +11,21 @@ import {
 	actionPlayersType,
 } from "../types/players/playersTypeData";
 
-type stateType = {
+type stateTypePlayers = {
 	error: boolean;
 	loading: boolean;
 	players: null | playerType[];
 	playersByTeam: null | playerType[];
 };
 
-const initialState: stateType = {
+const initialState: stateTypePlayers = {
 	error: false,
 	loading: false,
 	players: null,
 	playersByTeam: null,
 };
 
-export default function reduceMaps(
+export default function reducePlayers(
 	state = initialState,
 	action: actionPlayersType
 ) {
