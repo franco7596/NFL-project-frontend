@@ -44,7 +44,21 @@ export type actionSuccessfulGetTeamSelected = {
 	type: "SUCCESSFUL_GET_TEAM_SELECTED";
 	payload: teamType;
 };
+type actionSuccessfulGetTeamsDivisions = {
+	type: "SUCCESSFUL_GET_TEAM_DIVISION";
+	payload: divisionType[];
+};
+type actionStartGetTeamDivisions = {
+	type: "ERROR_GET_TEAM_DIVISION" | "START_GET_TEAM_DIVISION";
+};
 export type actionTeamsType =
 	| actionStartGetTeams
 	| actionSuccessfulGetTeams
-	| actionSuccessfulGetTeamSelected;
+	| actionSuccessfulGetTeamSelected
+	| actionStartGetTeamDivisions
+	| actionSuccessfulGetTeamsDivisions;
+
+export type divisionType = {
+	id: number;
+	name: string;
+};

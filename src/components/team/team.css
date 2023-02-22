@@ -30,3 +30,16 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
+.team_info-container {
+	color: var(--white-color);
+}
+
+.team_info-table {
+	background-color: var(--white-color);
+}
+
+.team_info-table-img {
+	height: 50px;
+	width: 50px;
+}

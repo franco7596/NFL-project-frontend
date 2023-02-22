@@ -5,11 +5,21 @@ import {
 	START_GET_TEAM_SELECTED,
 	ERROR_GET_TEAM_SELECTED,
 	SUCCESSFUL_GET_TEAM_SELECTED,
+	START_GET_TEAM_DIVISION,
+	ERROR_GET_TEAM_DIVISION,
+	SUCCESSFUL_GET_TEAM_DIVISION,
 } from "../types";
-import { teamType } from "../types/teams/teamsTypeData";
+import { teamType, divisionType } from "../types/teams/teamsTypeData";
+type filters = {
+	searchInput?: string | null;
+	orderDivision?: string | null;
+	orderAge?: boolean;
+	orderGames?: boolean;
+};
 
-export const startGetTeams = () => ({
+export const startGetTeams = (filters?: filters) => ({
 	type: START_GET_TEAMS,
+	payload: filters,
 });
 
 export const successfulGetTeams = (teams: teamType[]) => ({
@@ -33,4 +43,17 @@ export const successfulGetTeamSelected = (teams: teamType) => ({
 
 export const errorGetTeamSelected = () => ({
 	type: ERROR_GET_TEAM_SELECTED,
+});
+
+export const startGetTeamDivisions = () => ({
+	type: START_GET_TEAM_DIVISION,
+});
+
+export const successfulGetTeamsDivisions = (divisions: divisionType[]) => ({
+	type: SUCCESSFUL_GET_TEAM_DIVISION,
+	payload: divisions,
+});
+
+export const errorGetTeamDivisions = () => ({
+	type: ERROR_GET_TEAM_DIVISION,
 });

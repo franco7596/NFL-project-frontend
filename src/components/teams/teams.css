@@ -1,5 +1,16 @@
+.teams-section {
+	display: grid;
+	grid-template-rows: 10% 90%;
+	grid-template-columns: 1fr 3fr;
+}
+.teams-input {
+	grid-column: 1 / 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .teams-ul {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 15px 20px;
 }

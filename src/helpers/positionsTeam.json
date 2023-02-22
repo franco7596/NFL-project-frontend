@@ -1,0 +1,138 @@
+{
+	"defensePositions": [
+		{
+			"namePosition": "DE",
+			"namePositionsEquivalent": ["DE"],
+			"positionX": 360,
+			"positionY": 120
+		},
+		{
+			"namePosition": "DL",
+			"namePositionsEquivalent": ["DL", "CB"],
+			"positionX": 360,
+			"positionY": 180
+		},
+		{
+			"namePosition": "DL",
+			"namePositionsEquivalent": ["DL", "CB"],
+			"positionX": 360,
+			"positionY": 250
+		},
+		{
+			"namePosition": "DE",
+			"namePositionsEquivalent": ["DE"],
+			"positionX": 360,
+			"positionY": 320
+		},
+		{
+			"namePosition": "CB",
+			"namePositionsEquivalent": ["CB"],
+			"positionX": 300,
+			"positionY": 100
+		},
+		{
+			"namePosition": "CB",
+			"namePositionsEquivalent": ["CB"],
+			"positionX": 300,
+			"positionY": 350
+		},
+		{
+			"namePosition": "LB",
+			"namePositionsEquivalent": ["LB", "CB"],
+			"positionX": 260,
+			"positionY": 164
+		},
+		{
+			"namePosition": "LB",
+			"namePositionsEquivalent": ["LB", "CB"],
+			"positionX": 240,
+			"positionY": 224
+		},
+		{
+			"namePosition": "LB",
+			"namePositionsEquivalent": ["LB", "CB"],
+			"positionX": 260,
+			"positionY": 280
+		},
+		{
+			"namePosition": "FS",
+			"namePositionsEquivalent": ["FS", "S"],
+			"positionX": 180,
+			"positionY": 170
+		},
+		{
+			"namePosition": "SS",
+			"namePositionsEquivalent": ["SS", "SAF"],
+			"positionX": 180,
+			"positionY": 310
+		}
+	],
+	"attackPositions": [
+		{
+			"namePosition": "WR",
+			"namePositionsEquivalent": ["WR"],
+			"positionX": 475,
+			"positionY": 60
+		},
+		{
+			"namePosition": "OT",
+			"namePositionsEquivalent": ["OT", "T"],
+			"positionX": 455,
+			"positionY": 117
+		},
+		{
+			"namePosition": "OG",
+			"namePositionsEquivalent": ["OG", "G"],
+			"positionX": 455,
+			"positionY": 171
+		},
+		{
+			"namePosition": "C",
+			"namePositionsEquivalent": ["C"],
+			"positionX": 455,
+			"positionY": 226
+		},
+		{
+			"namePosition": "OG",
+			"namePositionsEquivalent": ["OG", "G"],
+			"positionX": 455,
+			"positionY": 279
+		},
+		{
+			"namePosition": "OT",
+			"namePositionsEquivalent": ["OT", "T"],
+			"positionX": 455,
+			"positionY": 335
+		},
+		{
+			"namePosition": "TE",
+			"namePositionsEquivalent": ["TE"],
+			"positionX": 455,
+			"positionY": 390
+		},
+		{
+			"namePosition": "QB",
+			"namePositionsEquivalent": ["QB"],
+			"positionX": 506,
+			"positionY": 226
+		},
+		{
+			"namePosition": "WR",
+			"namePositionsEquivalent": ["WR"],
+			"positionX": 548,
+			"positionY": 422
+		},
+		{
+			"namePosition": "FB",
+			"namePositionsEquivalent": ["FB", "RB"],
+			"positionX": 590,
+			"positionY": 226
+		},
+		{
+			"namePosition": "TB",
+			"namePositionsEquivalent": ["TB", "RB"],
+			"positionX": 670,
+			"positionY": 226
+		}
+	]
+}

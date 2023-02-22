@@ -5,14 +5,22 @@ import {
 	START_GET_TEAM_SELECTED,
 	ERROR_GET_TEAM_SELECTED,
 	SUCCESSFUL_GET_TEAM_SELECTED,
+	START_GET_TEAM_DIVISION,
+	ERROR_GET_TEAM_DIVISION,
+	SUCCESSFUL_GET_TEAM_DIVISION,
 } from "../types";
-import { teamType, actionTeamsType } from "../types/teams/teamsTypeData";
+import {
+	teamType,
+	actionTeamsType,
+	divisionType,
+} from "../types/teams/teamsTypeData";
 
 type stateTypeTeam = {
 	error: boolean;
 	loading: boolean;
 	teams: null | teamType[];
 	teamSelected: null | teamType;
+	comboDivisions: null | divisionType[];
 };
 
 const initialState: stateTypeTeam = {
@@ -20,6 +28,7 @@ const initialState: stateTypeTeam = {
 	loading: false,
 	teams: null,
 	teamSelected: null,
+	comboDivisions: null,
 };
 
 export default function reduceTeam(
@@ -28,12 +37,14 @@ export default function reduceTeam(
 ) {
 	switch (action.type) {
 		case START_GET_TEAMS:
+		case START_GET_TEAM_DIVISION:
 		case START_GET_TEAM_SELECTED:
 			return {
 				...state,
 				loading: true,
 			};
 		case ERROR_GET_TEAMS:
+		case ERROR_GET_TEAM_DIVISION:
 		case ERROR_GET_TEAM_SELECTED:
 			return {
 				...state,
@@ -51,6 +62,12 @@ export default function reduceTeam(
 				...state,
 				loading: false,
 				teamSelected: action.payload,
+			};
+		case SUCCESSFUL_GET_TEAM_DIVISION:
+			return {
+				...state,
+				loading: false,
+				comboDivisions: action.payload,
 			};
 		default:
 			return state;
