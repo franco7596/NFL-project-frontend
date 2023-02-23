@@ -1,6 +1,6 @@
 .teams-section {
 	display: grid;
-	grid-template-rows: 10% 90%;
+	grid-template-rows: 150px 90%;
 	grid-template-columns: 1fr 3fr;
 }
 .teams-input {
@@ -8,6 +8,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.check-button {
+	cursor: pointer;
 }
 .teams-ul {
 	display: grid;

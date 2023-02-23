@@ -14,11 +14,12 @@ import {
 	START_GET_TEAM_SELECTED,
 } from "../types";
 import {
+	actionStartGetTeams,
 	actionSuccessfulGetTeamSelected,
 	divisionType,
 	teamType,
 } from "../types/teams/teamsTypeData";
-import apiCall from "../../helpers/apiCall";
+import apiCall, { infoRequestType } from "../../helpers/apiCall";
 
 type responseGetTeams = {
 	status: number;
@@ -38,9 +39,18 @@ type responseGetTeamDivisions = {
 	divisions: divisionType[];
 };
 
-function* getTeams() {
+function* getTeams(info: actionStartGetTeams) {
 	try {
-		const teams: responseGetTeams = yield call(apiCall, "getTeam");
+		const infoRequest: infoRequestType = {
+			method: "POST",
+			url: "getTeam",
+			data: {
+				checkDivision: info.payload?.checkDivision,
+				radioSort: info.payload?.radioSort,
+				searchTeam: info.payload?.searchTeam,
+			},
+		};
+		const teams: responseGetTeams = yield call(apiCall, infoRequest);
 		if (teams.status !== 200) throw new Error(teams.statusText);
 		yield put(successfulGetTeams(teams.teams));
 	} catch (error) {
@@ -50,10 +60,11 @@ function* getTeams() {
 
 function* getTeamSelected(info: actionSuccessfulGetTeamSelected) {
 	try {
-		const player: responseGetTeamSelected = yield call(
-			apiCall,
-			`getTeamById?id= ${info.payload}`
-		);
+		const infoRequest: infoRequestType = {
+			method: "GET",
+			url: `getTeamById?id= ${info.payload}`,
+		};
+		const player: responseGetTeamSelected = yield call(apiCall, infoRequest);
 		if (player.status !== 200) throw new Error(player.statusText);
 		yield put(successfulGetTeamSelected(player.team));
 	} catch (error) {
@@ -63,9 +74,13 @@ function* getTeamSelected(info: actionSuccessfulGetTeamSelected) {
 
 function* getTeamDivisions() {
 	try {
+		const infoRequest: infoRequestType = {
+			method: "GET",
+			url: "getComboDivision",
+		};
 		const divisions: responseGetTeamDivisions = yield call(
 			apiCall,
-			"getComboDivision"
+			infoRequest
 		);
 		if (divisions.status !== 200) throw new Error(divisions.statusText);
 		yield put(successfulGetTeamsDivisions(divisions.divisions));

@@ -9,15 +9,13 @@ import {
 	ERROR_GET_TEAM_DIVISION,
 	SUCCESSFUL_GET_TEAM_DIVISION,
 } from "../types";
-import { teamType, divisionType } from "../types/teams/teamsTypeData";
-type filters = {
-	searchInput?: string | null;
-	orderDivision?: string | null;
-	orderAge?: boolean;
-	orderGames?: boolean;
-};
+import {
+	teamType,
+	divisionType,
+	filtersTeams,
+} from "../types/teams/teamsTypeData";
 
-export const startGetTeams = (filters?: filters) => ({
+export const startGetTeams = (filters?: filtersTeams) => ({
 	type: START_GET_TEAMS,
 	payload: filters,
 });

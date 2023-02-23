@@ -11,7 +11,7 @@ import {
 	playerType,
 	actionSuccessfulGetplayers,
 } from "../types/players/playersTypeData";
-import apiCall from "../../helpers/apiCall";
+import apiCall, { infoRequestType } from "../../helpers/apiCall";
 
 type responseGetPlayers = {
 	status: number;
@@ -28,7 +28,11 @@ type responseGetPlayersByTeam = {
 
 function* getPlayers() {
 	try {
-		const players: responseGetPlayers = yield call(apiCall, "getPlayers");
+		const infoRequest: infoRequestType = {
+			method: "GET",
+			url: "getPlayers",
+		};
+		const players: responseGetPlayers = yield call(apiCall, infoRequest);
 		if (players.status !== 200) throw new Error(players.statusText);
 		yield put(successfulGetPlayers(players.players));
 	} catch (error) {
@@ -37,10 +41,11 @@ function* getPlayers() {
 }
 function* getPlayersByTeam(info: actionSuccessfulGetplayers) {
 	try {
-		const player: responseGetPlayersByTeam = yield call(
-			apiCall,
-			`getPlayersByTeam?id_team= ${info.payload}`
-		);
+		const infoRequest: infoRequestType = {
+			method: "GET",
+			url: `getPlayersByTeam?id_team= ${info.payload}`,
+		};
+		const player: responseGetPlayersByTeam = yield call(apiCall, infoRequest);
 		if (player.status !== 200) throw new Error(player.statusText);
 		yield put(successfulGetPlayersByTeam(player.players));
 	} catch (error) {

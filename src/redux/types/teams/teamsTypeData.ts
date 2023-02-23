@@ -29,13 +29,22 @@ export type teamType = {
 	};
 };
 
-type actionStartGetTeams = {
+type actionGetTeams = {
 	type:
-		| "START_GET_TEAMS"
 		| "START_GET_TEAM_SELECTED"
 		| "ERROR_GET_TEAMS"
 		| "ERROR_GET_TEAM_SELECTED";
 };
+export type filtersTeams = {
+	searchTeam?: string | null;
+	checkDivision?: { [key: string]: boolean } | null;
+	radioSort?: string;
+};
+export type actionStartGetTeams = {
+	type: "START_GET_TEAMS";
+	payload?: filtersTeams;
+};
+
 type actionSuccessfulGetTeams = {
 	type: "SUCCESSFUL_GET_TEAMS";
 	payload: teamType[];
@@ -52,6 +61,7 @@ type actionStartGetTeamDivisions = {
 	type: "ERROR_GET_TEAM_DIVISION" | "START_GET_TEAM_DIVISION";
 };
 export type actionTeamsType =
+	| actionGetTeams
 	| actionStartGetTeams
 	| actionSuccessfulGetTeams
 	| actionSuccessfulGetTeamSelected
