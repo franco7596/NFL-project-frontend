@@ -1,27 +1,87 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { startGetPlayersByTeam } from "../../redux/actions/playersAction";
+import {
+	startGetPlayersByTeam,
+	startGetPlayerStatus,
+} from "../../redux/actions/playersAction";
 import { stateType } from "../../redux/store";
 import "./team.css";
 import { startGetTeamSelected } from "../../redux/actions/teamsAction";
 import PlayersFild from "./PlayersFild";
 import positionsTeam from "../../helpers/positionsTeam.json";
 import emptyPlayer from "../../assets/players/EmptyPlayer.svg";
+import { playerType } from "../../redux/types/players/playersTypeData";
+import { v4 as uuidv4 } from "uuid";
+import TablePlayers from "../players/TablePlayers";
 
 export default function Team() {
 	const { idTeam } = useParams();
 	const dispach = useDispatch();
+	const [playersByTeamFiltered, setplayersByTeamFiltered] = useState<
+		playerType[] | null
+	>(null);
+	const [filterBy, setFilterBy] = useState("all");
+	const [searchPlayer, setSearchPlayer] = useState("");
 	const playersByTeam = useSelector(
 		(state: stateType) => state.players.playersByTeam
+	);
+	const playerStatus = useSelector(
+		(state: stateType) => state.players.comboStatus
 	);
 	const teamSelected = useSelector(
 		(state: stateType) => state.teams.teamSelected
 	);
 	useEffect(() => {
-		dispach(startGetPlayersByTeam(parseInt(idTeam || "0")));
-		dispach(startGetTeamSelected(parseInt(idTeam || "0")));
+		dispach(startGetPlayerStatus());
+	}, []);
+
+	useEffect(() => {
+		if (idTeam) {
+			dispach(startGetPlayersByTeam(parseInt(idTeam)));
+			dispach(startGetTeamSelected(parseInt(idTeam)));
+		}
 	}, [idTeam]);
+
+	useEffect(() => {
+		setplayersByTeamFiltered(playersByTeam);
+	}, [playersByTeam]);
+
+	const handleFilterStatus = (playerStatus: string) => {
+		setFilterBy(playerStatus);
+		handleFilters(playerStatus, searchPlayer);
+	};
+
+	const handleSearchPlayer = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchPlayer(e.target.value);
+		const searchText = e.target.value;
+		handleFilters(filterBy, searchText);
+	};
+
+	const handleFilters = (status: string, searchText: string) => {
+		let playersFilted: playerType[] | null | undefined = playersByTeam;
+		if (status !== "all") {
+			playersFilted = playersByTeam?.filter(
+				(player) => player.infoCurrentTeam.status === status
+			);
+			if (!playersFilted) playersFilted = null;
+		}
+		if (searchText !== "")
+			playersFilted = playersFilted?.filter(
+				(player) =>
+					player.infoPlayer.name
+						.toLowerCase()
+						.includes(searchText.toLowerCase()) ||
+					player.college.name
+						.toLowerCase()
+						.includes(searchText.toLowerCase()) ||
+					player.infoCurrentTeam.position
+						.toLowerCase()
+						.includes(searchText.toLowerCase())
+			);
+		if (!playersFilted) playersFilted = null;
+		setplayersByTeamFiltered(playersFilted);
+	};
 
 	return (
 		<div
@@ -73,51 +133,38 @@ export default function Team() {
 				<h4>Owners</h4>
 				<h5>{teamSelected?.owners.map((owner) => owner.name)}</h5>
 			</div>
-			{playersByTeam !== null && (
-				<div>
-					<table className="team_info-table">
-						<thead>
-							<tr>
-								<th>Player</th>
-								<th>No</th>
-								<th>Position</th>
-								<th>Status</th>
-								<th>Experience</th>
-								<th>Collage</th>
-							</tr>
-						</thead>
-						<tbody>
-							{playersByTeam?.map((player) => (
-								<tr key={player.id}>
-									<td>
-										{player.images.photo !== "" ? (
-											<img
-												className="team_info-table-img"
-												src={player.images.photo}
-												alt="Photo Player"
-											/>
-										) : (
-											<img
-												className="team_info-table-img"
-												src={emptyPlayer}
-												alt="Photo Player"
-											/>
-										)}
-										<Link to={`/player/${player.id}`}>
-											{player.infoPlayer.name}
-										</Link>
-									</td>
-									<td>{player.infoCurrentTeam.number}</td>
-									<td>{player.infoCurrentTeam.position}</td>
-									<td>{player.infoCurrentTeam.status}</td>
-									<td>{player.infoPlayer.experience}</td>
-									<td>{player.college.name}</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
+			<div>
+				<h4>FILTER BY PLAYERS STATUS</h4>
+				<div className="dropdown">
+					<button
+						className="btn btn-secondary dropdown-toggle"
+						type="button"
+						id="dropdownMenuButton1"
+						data-bs-toggle="dropdown"
+						aria-expanded="false"
+					>
+						{filterBy.toUpperCase()}
+					</button>
+					<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li key={uuidv4()}>
+							<button onClick={() => handleFilterStatus("all")}>ALL</button>
+						</li>
+						{playerStatus?.map((status) => (
+							<li key={status.id}>
+								<button onClick={() => handleFilterStatus(status.name)}>
+									{status.name.toUpperCase()}
+								</button>
+							</li>
+						))}
+					</ul>
 				</div>
-			)}
+				<input
+					value={searchPlayer}
+					onChange={handleSearchPlayer}
+					placeholder="search player..."
+				/>
+			</div>
+			{playersByTeam !== null && <TablePlayers players={playersByTeam} />}
 		</div>
 	);
 }

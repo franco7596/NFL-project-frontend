@@ -5,16 +5,23 @@ import {
 	START_GET_PLAYERS_BY_TEAM,
 	ERROR_GET_PLAYERS_BY_TEAM,
 	SUCCESSFUL_GET_PLAYERS_BY_TEAM,
+	START_GET_PLAYER_STATUS,
+	ERROR_GET_PLAYER_STATUS,
+	SUCCESSFUL_GET_PLAYER_STATUS,
 } from "../types";
-import { playerType } from "../types/players/playersTypeData";
+import {
+	playerType,
+	responseGetPlayers,
+	statusType,
+} from "../types/players/playersTypeData";
 
 export const startGetPlayers = () => ({
 	type: START_GET_PLAYERS,
 });
 
-export const successfulGetPlayers = (players: playerType[]) => ({
+export const successfulGetPlayers = (data: responseGetPlayers) => ({
 	type: SUCCESSFUL_GET_PLAYERS,
-	payload: players,
+	payload: data,
 });
 
 export const errorGetPlayers = () => ({
@@ -32,4 +39,17 @@ export const successfulGetPlayersByTeam = (players: playerType[]) => ({
 
 export const errorGetPlayersByTeam = () => ({
 	type: ERROR_GET_PLAYERS_BY_TEAM,
+});
+
+export const startGetPlayerStatus = () => ({
+	type: START_GET_PLAYER_STATUS,
+});
+
+export const successfulGetPlayerStatus = (status: statusType[]) => ({
+	type: SUCCESSFUL_GET_PLAYER_STATUS,
+	payload: status,
+});
+
+export const errorGetPlayerStatus = () => ({
+	type: ERROR_GET_PLAYER_STATUS,
 });

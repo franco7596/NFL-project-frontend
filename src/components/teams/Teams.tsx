@@ -28,13 +28,6 @@ export default function Teams() {
 		dispach(startGetTeamDivisions());
 	}, []);
 
-	const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.value !== "") {
-			setSearchTeam(e.target.value);
-		} else {
-			setSearchTeam(null);
-		}
-	};
 	useEffect(() => {
 		if (divisions) {
 			const divisionCheck: checkBoxType = {};
@@ -50,6 +43,14 @@ export default function Teams() {
 			dispach(startGetTeams({ checkDivision, radioSort, searchTeam }));
 	}, [checkDivision, radioSort, searchTeam]);
 
+	const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.value !== "") {
+			setSearchTeam(e.target.value);
+		} else {
+			setSearchTeam(null);
+		}
+	};
+
 	const handleCheckDivision = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (checkDivision)
 			setCheckDivision({
@@ -60,7 +61,12 @@ export default function Teams() {
 
 	const handleRadioSort = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setRadioSort(e.target.value);
+		console.log(e);
 	};
+
+	useEffect(() => {
+		console.log(radioSort);
+	}, [radioSort]);
 
 	return (
 		<section className="teams-section">

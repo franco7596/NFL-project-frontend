@@ -26,18 +26,44 @@ export type playerType = {
 		name: string;
 	};
 };
+export type responseGetPlayers = {
+	status: number;
+	statusText: string;
+	numPages: number;
+	currentPage: number;
+	players: playerType[];
+};
 
 type actionWithoutPayload = {
 	type:
 		| "START_GET_PLAYERS"
 		| "START_GET_PLAYERS_BY_TEAM"
 		| "ERROR_GET_PLAYERS"
-		| "ERROR_GET_PLAYERS_BY_TEAM";
+		| "ERROR_GET_PLAYERS_BY_TEAM"
+		| "START_GET_PLAYER_STATUS"
+		| "ERROR_GET_PLAYER_STATUS";
 };
-export type actionSuccessfulGetplayers = {
-	type: "SUCCESSFUL_GET_PLAYERS" | "SUCCESSFUL_GET_PLAYERS_BY_TEAM";
+export type actionSuccessfulGetplayersByTeam = {
+	type: "SUCCESSFUL_GET_PLAYERS_BY_TEAM";
 	payload: playerType[];
 };
+export type actionSuccessfulGetplayers = {
+	type: "SUCCESSFUL_GET_PLAYERS";
+	payload: responseGetPlayers;
+};
+
+type actionSuccessfulGetTeamsDivisions = {
+	type: "SUCCESSFUL_GET_PLAYER_STATUS";
+	payload: statusType[];
+};
+
+export type statusType = {
+	id: number;
+	name: string;
+};
+
 export type actionPlayersType =
 	| actionWithoutPayload
-	| actionSuccessfulGetplayers;
+	| actionSuccessfulGetplayers
+	| actionSuccessfulGetTeamsDivisions
+	| actionSuccessfulGetplayersByTeam;
