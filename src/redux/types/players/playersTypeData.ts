@@ -1,3 +1,5 @@
+import { filtersGenericPage } from "../../../helpers/typesHelpers";
+
 export type playerType = {
 	id: number;
 	infoPlayer: {
@@ -15,6 +17,7 @@ export type playerType = {
 	infoCurrentTeam: {
 		id: number;
 		name: string;
+		image: string;
 		position: string;
 		number: number;
 		status: string;
@@ -33,16 +36,35 @@ export type responseGetPlayers = {
 	currentPage: number;
 	players: playerType[];
 };
+export type responseGetPlayerById = {
+	status: number;
+	statusText: string;
+	player: playerType;
+};
 
 type actionWithoutPayload = {
 	type:
-		| "START_GET_PLAYERS"
 		| "START_GET_PLAYERS_BY_TEAM"
 		| "ERROR_GET_PLAYERS"
 		| "ERROR_GET_PLAYERS_BY_TEAM"
 		| "START_GET_PLAYER_STATUS"
+		| "ERROR_GET_PLAYER_SELECTED"
 		| "ERROR_GET_PLAYER_STATUS";
 };
+
+export type actionStartGetPlayerById = {
+	type: "START_GET_PLAYER_SELECTED";
+	payload: { id: number };
+};
+export type actionStartGetPlayers = {
+	type: "START_GET_PLAYERS";
+	payload?: filtersGenericPage;
+};
+export type actionSuccessfulGetplayersByid = {
+	type: "SUCCESSFUL_GET_PLAYER_SELECTED";
+	payload: playerType;
+};
+
 export type actionSuccessfulGetplayersByTeam = {
 	type: "SUCCESSFUL_GET_PLAYERS_BY_TEAM";
 	payload: playerType[];
@@ -66,4 +88,7 @@ export type actionPlayersType =
 	| actionWithoutPayload
 	| actionSuccessfulGetplayers
 	| actionSuccessfulGetTeamsDivisions
-	| actionSuccessfulGetplayersByTeam;
+	| actionSuccessfulGetplayersByTeam
+	| actionStartGetPlayerById
+	| actionSuccessfulGetplayersByid
+	| actionStartGetPlayers;

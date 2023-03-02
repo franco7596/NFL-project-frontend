@@ -34,7 +34,7 @@ const initialState: stateTypeTeam = {
 export default function reduceTeam(
 	state = initialState,
 	action: actionTeamsType
-) {
+): stateTypeTeam {
 	switch (action.type) {
 		case START_GET_TEAMS:
 		case START_GET_TEAM_DIVISION:

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -7,9 +7,14 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import "./navBar.css";
 import { useNavigate } from "react-router-dom";
 import homeIcon from "../../assets/icons/logo-NFL.png";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LoginUser from "../logInUser/LoginUser";
 
 export default function NavBar() {
 	const navegation = useNavigate();
+	const [openModal, setOpenModal] = useState(false);
+	const handleOpen = () => setOpenModal(true);
+	const handleClose = () => setOpenModal(false);
 	return (
 		<div className="nav_bar">
 			<Box
@@ -52,10 +57,14 @@ export default function NavBar() {
 									<GitHubIcon />
 								</a>
 							</Button>
+							<Button onClick={handleOpen} color="inherit">
+								<AccountCircleIcon />
+							</Button>
 						</div>
 					</div>
 				</AppBar>
 			</Box>
+			<LoginUser openModal={openModal} handleClose={handleClose} />
 		</div>
 	);
 }

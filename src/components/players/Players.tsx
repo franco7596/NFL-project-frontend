@@ -8,55 +8,99 @@ import { stateType } from "../../redux/store";
 import FilterCard from "../filtersSorter/FilterCard";
 import SearchBoard from "../filtersSorter/SearchBoard";
 import SortCard from "../filtersSorter/SortCard";
+import Loading from "../loading/Loading";
 import TablePlayers from "./TablePlayers";
 
-const optionsToSortByWeigth = [
+const optionsToSortByExperience = [
 	{
-		id: "won1",
-		typeOption: "won ASC",
-		textSort: "less winner",
+		typeOption: "experience DESC",
+		textSort: "Expert",
 	},
 	{
-		id: "won2",
-		typeOption: "won DESC",
-		textSort: "most winner",
+		typeOption: "experience ASC",
+		textSort: "rookie",
 	},
 ];
 const optionsToSortByAge = [
 	{
-		id: "established1",
-		typeOption: "established ASC",
+		typeOption: "age DESC",
 		textSort: "Older",
 	},
 	{
-		id: "established2",
-		typeOption: "established DESC",
+		typeOption: "age ASC",
 		textSort: "Younger",
 	},
 ];
 
+type checkBoxType = {
+	[key: string]: boolean;
+};
+
 export default function Players() {
 	const dispach = useDispatch();
 	const players = useSelector((state: stateType) => state.players.players);
-	const currentPage = useSelector(
-		(state: stateType) => state.players.currentPage
+	const playersLoading = useSelector(
+		(state: stateType) => state.players.loading
 	);
 	const numPages = useSelector((state: stateType) => state.players.numPages);
 	const playerStatus = useSelector(
 		(state: stateType) => state.players.comboStatus
 	);
-	const [radioSort, setRadioSort] = useState("won ASC");
+
 	const [sortSelected, setSortSelected] = useState("");
+	const [checkOptions, setCheckOptions] = useState<null | checkBoxType>(null);
+	const [searchInpit, setSearchInpit] = useState<null | string>(null);
+	const [currentPage, setCurrentPage] = useState(1);
 	useEffect(() => {
-		dispach(startGetPlayers());
 		dispach(startGetPlayers());
 		dispach(startGetPlayerStatus());
 	}, []);
 
-	const handleSearchInput = () => {};
-	const handleCheckDivision = () => {};
+	useEffect(() => {
+		if (playerStatus) {
+			const checkStatus: checkBoxType = {};
+			playerStatus.forEach((status) => {
+				checkStatus[status.id] = false;
+			});
+			setCheckOptions(checkStatus);
+		}
+	}, [playerStatus]);
+
+	useEffect(() => {
+		if (checkOptions) {
+			dispach(
+				startGetPlayers({
+					checkOptions,
+					sortSelected,
+					searchInpit,
+					page: currentPage,
+				})
+			);
+		}
+	}, [sortSelected, checkOptions, searchInpit, currentPage]);
+
+	const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.value !== "") {
+			setSearchInpit(e.target.value);
+		} else {
+			setSearchInpit(null);
+		}
+		handlePage(1);
+	};
+	const handleCheckDivision = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (checkOptions)
+			setCheckOptions({
+				...checkOptions,
+				[e.target.value]: !checkOptions[e.target.value],
+			});
+		handlePage(1);
+	};
 	const handleRadioSort = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setRadioSort(e.target.value);
+		setSortSelected(e.target.value);
+		handlePage(1);
+	};
+	const handlePage = (page: number) => {
+		setCurrentPage(page);
 	};
 
 	return (
@@ -73,18 +117,27 @@ export default function Players() {
 				/>
 			)}
 			<SortCard
-				typeOfSort="weigth"
+				typeOfSort="Experience"
 				handleSort={handleRadioSort}
 				sortSelected={sortSelected}
-				optionsToSort={optionsToSortByWeigth}
+				optionsToSort={optionsToSortByExperience}
 			/>
 			<SortCard
-				typeOfSort="age"
+				typeOfSort="Age"
 				handleSort={handleRadioSort}
 				sortSelected={sortSelected}
 				optionsToSort={optionsToSortByAge}
 			/>
-			{players !== null && <TablePlayers players={players} />}
+			{players !== null && !playersLoading ? (
+				<TablePlayers
+					players={players}
+					numPages={numPages}
+					currentPage={currentPage}
+					handlePage={handlePage}
+				/>
+			) : (
+				<Loading />
+			)}
 		</section>
 	);
 }

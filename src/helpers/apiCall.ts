@@ -1,5 +1,5 @@
 import clienteAxios from "../axios";
-import { filtersTeams } from "../redux/types/teams/teamsTypeData";
+import { filtersGenericPage, loguinData } from "./typesHelpers";
 
 export type infoRequestType = {
 	method: "POST" | "GET";
@@ -7,15 +7,14 @@ export type infoRequestType = {
 	headers?: {
 		"x-acces-token": string;
 	};
-	data?: filtersTeams;
-	params?: filtersTeams;
+	data?: filtersGenericPage | loguinData;
 };
 
 export default function apiCall(infoRequest: infoRequestType) {
 	return clienteAxios(infoRequest)
 		.then((resp) => {
 			if (resp.status !== 200) {
-				throw { error: "error en la peticion" };
+				throw new Error("error en la peticion");
 			}
 			return resp.data;
 		})

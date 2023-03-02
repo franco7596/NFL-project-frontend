@@ -45,9 +45,9 @@ function* getTeams(info: actionStartGetTeams) {
 			method: "POST",
 			url: "getTeam",
 			data: {
-				checkDivision: info.payload?.checkDivision,
-				radioSort: info.payload?.radioSort,
-				searchTeam: info.payload?.searchTeam,
+				checkOptions: info.payload?.checkOptions,
+				sortSelected: info.payload?.sortSelected,
+				searchInpit: info.payload?.searchInpit,
 			},
 		};
 		const teams: responseGetTeams = yield call(apiCall, infoRequest);

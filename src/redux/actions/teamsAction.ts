@@ -1,3 +1,4 @@
+import { filtersGenericPage } from "../../helpers/typesHelpers";
 import {
 	SUCCESSFUL_GET_TEAMS,
 	ERROR_GET_TEAMS,
@@ -9,13 +10,9 @@ import {
 	ERROR_GET_TEAM_DIVISION,
 	SUCCESSFUL_GET_TEAM_DIVISION,
 } from "../types";
-import {
-	teamType,
-	divisionType,
-	filtersTeams,
-} from "../types/teams/teamsTypeData";
+import { teamType, divisionType } from "../types/teams/teamsTypeData";
 
-export const startGetTeams = (filters?: filtersTeams) => ({
+export const startGetTeams = (filters?: filtersGenericPage) => ({
 	type: START_GET_TEAMS,
 	payload: filters,
 });

@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 type SortCardType = {
 	typeOfSort: string;
 	optionsToSort: {
-		id: string;
 		typeOption: string;
 		textSort: string;
 	}[];
@@ -28,12 +27,12 @@ export default function SortCard({
 							className="form-check-input"
 							type="radio"
 							name="radioSort"
-							id={optionSort.id}
+							id={optionSort.typeOption}
 							value={optionSort.typeOption}
 							onChange={handleSort}
 							checked={sortSelected === optionSort.typeOption}
 						/>
-						<label className="form-check-label" htmlFor={optionSort.id}>
+						<label className="form-check-label" htmlFor={optionSort.typeOption}>
 							{optionSort.textSort}
 						</label>
 					</div>

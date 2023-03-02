@@ -14,6 +14,7 @@ import emptyPlayer from "../../assets/players/EmptyPlayer.svg";
 import { playerType } from "../../redux/types/players/playersTypeData";
 import { v4 as uuidv4 } from "uuid";
 import TablePlayers from "../players/TablePlayers";
+import Loading from "../loading/Loading";
 
 export default function Team() {
 	const { idTeam } = useParams();
@@ -26,12 +27,16 @@ export default function Team() {
 	const playersByTeam = useSelector(
 		(state: stateType) => state.players.playersByTeam
 	);
+	const playersLoading = useSelector(
+		(state: stateType) => state.players.loading
+	);
 	const playerStatus = useSelector(
 		(state: stateType) => state.players.comboStatus
 	);
 	const teamSelected = useSelector(
 		(state: stateType) => state.teams.teamSelected
 	);
+	const teamLoading = useSelector((state: stateType) => state.teams.loading);
 	useEffect(() => {
 		dispach(startGetPlayerStatus());
 	}, []);
@@ -83,7 +88,7 @@ export default function Team() {
 		setplayersByTeamFiltered(playersFilted);
 	};
 
-	return (
+	return playersByTeam && teamSelected && !playersLoading && !teamLoading ? (
 		<div
 			className="team-container"
 			style={{
@@ -166,5 +171,7 @@ export default function Team() {
 			</div>
 			{playersByTeam !== null && <TablePlayers players={playersByTeam} />}
 		</div>
+	) : (
+		<Loading />
 	);
 }

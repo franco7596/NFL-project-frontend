@@ -8,6 +8,9 @@ import {
 	START_GET_PLAYER_STATUS,
 	ERROR_GET_PLAYER_STATUS,
 	SUCCESSFUL_GET_PLAYER_STATUS,
+	START_GET_PLAYER_SELECTED,
+	ERROR_GET_PLAYER_SELECTED,
+	SUCCESSFUL_GET_PLAYER_SELECTED,
 } from "../types";
 import {
 	playerType,
@@ -19,6 +22,7 @@ type stateTypePlayers = {
 	error: boolean;
 	loading: boolean;
 	players: null | playerType[];
+	playerSelected: null | playerType;
 	playersByTeam: null | playerType[];
 	comboStatus: null | statusType[];
 	currentPage: number;
@@ -29,6 +33,7 @@ const initialState: stateTypePlayers = {
 	error: false,
 	loading: false,
 	players: null,
+	playerSelected: null,
 	playersByTeam: null,
 	comboStatus: null,
 	currentPage: 1,
@@ -38,10 +43,11 @@ const initialState: stateTypePlayers = {
 export default function reducePlayers(
 	state = initialState,
 	action: actionPlayersType
-) {
+): stateTypePlayers {
 	switch (action.type) {
 		case START_GET_PLAYERS:
 		case START_GET_PLAYERS_BY_TEAM:
+		case START_GET_PLAYER_SELECTED:
 		case START_GET_PLAYER_STATUS:
 			return {
 				...state,
@@ -49,6 +55,7 @@ export default function reducePlayers(
 			};
 		case ERROR_GET_PLAYERS:
 		case ERROR_GET_PLAYERS_BY_TEAM:
+		case ERROR_GET_PLAYER_SELECTED:
 		case ERROR_GET_PLAYER_STATUS:
 			return {
 				...state,
@@ -68,6 +75,12 @@ export default function reducePlayers(
 				...state,
 				loading: false,
 				playersByTeam: action.payload,
+			};
+		case SUCCESSFUL_GET_PLAYER_SELECTED:
+			return {
+				...state,
+				loading: false,
+				playerSelected: action.payload,
 			};
 		case SUCCESSFUL_GET_PLAYER_STATUS:
 			return {

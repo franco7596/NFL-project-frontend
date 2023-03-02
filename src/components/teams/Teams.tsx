@@ -9,15 +9,40 @@ import { stateType } from "../../redux/store";
 import CardTeam from "./CardTeam";
 import "./teams.css";
 import { v4 as uuidv4 } from "uuid";
+import SearchBoard from "../filtersSorter/SearchBoard";
+import FilterCard from "../filtersSorter/FilterCard";
+import SortCard from "../filtersSorter/SortCard";
+import Loading from "../loading/Loading";
 
 type checkBoxType = {
 	[key: string]: boolean;
 };
+const optionsToSortByGamesWon = [
+	{
+		typeOption: "won DESC",
+		textSort: "Most Winner",
+	},
+	{
+		typeOption: "won ASC",
+		textSort: "less winner",
+	},
+];
+const optionsToSortByAge = [
+	{
+		typeOption: "established ASC",
+		textSort: "Older",
+	},
+	{
+		typeOption: "established DESC",
+		textSort: "Younger",
+	},
+];
 
 export default function Teams() {
-	const [searchTeam, setSearchTeam] = useState<null | string>(null);
-	const [checkDivision, setCheckDivision] = useState<null | checkBoxType>(null);
-	const [radioSort, setRadioSort] = useState<string>("won ASC");
+	const [sortSelected, setSortSelected] = useState("");
+	const [checkOptions, setCheckOptions] = useState<null | checkBoxType>(null);
+	const [searchInpit, setSearchInpit] = useState<null | string>(null);
+
 	const dispach = useDispatch();
 	const teams = useSelector((state: stateType) => state.teams.teams);
 	const divisions = useSelector(
@@ -30,133 +55,69 @@ export default function Teams() {
 
 	useEffect(() => {
 		if (divisions) {
-			const divisionCheck: checkBoxType = {};
+			const checkStatus: checkBoxType = {};
 			divisions.forEach((division) => {
-				divisionCheck[division.id] = false;
+				checkStatus[division.id] = false;
 			});
-			setCheckDivision(divisionCheck);
+			setCheckOptions(checkStatus);
 		}
 	}, [divisions]);
 
 	useEffect(() => {
-		if (checkDivision)
-			dispach(startGetTeams({ checkDivision, radioSort, searchTeam }));
-	}, [checkDivision, radioSort, searchTeam]);
+		if (checkOptions)
+			dispach(
+				startGetTeams({
+					checkOptions,
+					sortSelected,
+					searchInpit,
+				})
+			);
+	}, [checkOptions, sortSelected, searchInpit]);
 
 	const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.value !== "") {
-			setSearchTeam(e.target.value);
+			setSearchInpit(e.target.value);
 		} else {
-			setSearchTeam(null);
+			setSearchInpit(null);
 		}
 	};
-
 	const handleCheckDivision = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (checkDivision)
-			setCheckDivision({
-				...checkDivision,
-				[e.target.value]: !checkDivision[e.target.value],
+		if (checkOptions)
+			setCheckOptions({
+				...checkOptions,
+				[e.target.value]: !checkOptions[e.target.value],
 			});
 	};
-
 	const handleRadioSort = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setRadioSort(e.target.value);
-		console.log(e);
+		setSortSelected(e.target.value);
 	};
 
-	useEffect(() => {
-		console.log(radioSort);
-	}, [radioSort]);
-
-	return (
+	return teams ? (
 		<section className="teams-section">
-			<div className="teams-input">
-				<input placeholder="Name of team" onChange={handleSearchInput} />
-			</div>
+			<SearchBoard
+				handleSearch={handleSearchInput}
+				placeholder={"TEAM NAME..."}
+			/>
 			<div>
-				<h4>Filters</h4>
-				<div className="card card-body">
-					<h6>filtered by division</h6>
-					{divisions?.map((division) => (
-						<div className="form-check" key={division.id}>
-							<input
-								className="form-check-input check-button"
-								type="checkbox"
-								value={division.id}
-								id={division.name}
-								onChange={handleCheckDivision}
-							/>
-							<label
-								className="form-check-label check-button"
-								htmlFor={division.name}
-							>
-								{division.name}
-							</label>
-						</div>
-					))}
-				</div>
-				<h4>Order</h4>
-				<div className="card card-body">
-					<h5>sort by games won</h5>
-					<div className="form-check">
-						<input
-							className="form-check-input"
-							type="radio"
-							name="radioSort"
-							id="byGamesWonDESC"
-							value="won DESC"
-							onChange={handleRadioSort}
-							checked={radioSort === "won DESC"}
-						/>
-						<label className="form-check-label" htmlFor="byGamesWonDESC">
-							most winner
-						</label>
-					</div>
-					<div className="form-check">
-						<input
-							className="form-check-input"
-							type="radio"
-							name="radioSort"
-							id="byGamesWonASC"
-							value="won ASC"
-							onChange={handleRadioSort}
-							checked={radioSort === "won ASC"}
-						/>
-						<label className="form-check-label" htmlFor="byGamesWonASC">
-							less winner
-						</label>
-					</div>
-
-					<h5>sort by age</h5>
-					<div className="form-check">
-						<input
-							className="form-check-input"
-							type="radio"
-							name="radioSort"
-							id="byAgeASC"
-							value="established ASC"
-							checked={radioSort === "established ASC"}
-							onChange={handleRadioSort}
-						/>
-						<label className="form-check-label" htmlFor="byAgeASC">
-							Older
-						</label>
-					</div>
-					<div className="form-check">
-						<input
-							className="form-check-input"
-							type="radio"
-							name="radioSort"
-							id="byAgeDESC"
-							value="established DESC"
-							checked={radioSort === "established DESC"}
-							onChange={handleRadioSort}
-						/>
-						<label className="form-check-label" htmlFor="byAgeDESC">
-							Younger
-						</label>
-					</div>
-				</div>
+				{divisions !== null && (
+					<FilterCard
+						typeOfFilter="filtered by division"
+						optionsCheck={divisions}
+						handleCheck={handleCheckDivision}
+					/>
+				)}
+				<SortCard
+					typeOfSort="Games Won"
+					handleSort={handleRadioSort}
+					sortSelected={sortSelected}
+					optionsToSort={optionsToSortByGamesWon}
+				/>
+				<SortCard
+					typeOfSort="Age"
+					handleSort={handleRadioSort}
+					sortSelected={sortSelected}
+					optionsToSort={optionsToSortByAge}
+				/>
 			</div>
 			{teams && (
 				<ul className="teams-ul">
@@ -166,5 +127,7 @@ export default function Teams() {
 				</ul>
 			)}
 		</section>
+	) : (
+		<Loading />
 	);
 }

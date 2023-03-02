@@ -1,3 +1,5 @@
+import { filtersGenericPage } from "../../../helpers/typesHelpers";
+
 export type teamType = {
 	id: number;
 	infoTeam: {
@@ -35,14 +37,10 @@ type actionGetTeams = {
 		| "ERROR_GET_TEAMS"
 		| "ERROR_GET_TEAM_SELECTED";
 };
-export type filtersTeams = {
-	searchTeam?: string | null;
-	checkDivision?: { [key: string]: boolean } | null;
-	radioSort?: string;
-};
+
 export type actionStartGetTeams = {
 	type: "START_GET_TEAMS";
-	payload?: filtersTeams;
+	payload?: filtersGenericPage;
 };
 
 type actionSuccessfulGetTeams = {

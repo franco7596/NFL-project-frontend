@@ -1,3 +1,4 @@
+import { filtersGenericPage } from "../../helpers/typesHelpers";
 import {
 	START_GET_PLAYERS,
 	ERROR_GET_PLAYERS,
@@ -8,15 +9,20 @@ import {
 	START_GET_PLAYER_STATUS,
 	ERROR_GET_PLAYER_STATUS,
 	SUCCESSFUL_GET_PLAYER_STATUS,
+	START_GET_PLAYER_SELECTED,
+	ERROR_GET_PLAYER_SELECTED,
+	SUCCESSFUL_GET_PLAYER_SELECTED,
 } from "../types";
 import {
 	playerType,
+	responseGetPlayerById,
 	responseGetPlayers,
 	statusType,
 } from "../types/players/playersTypeData";
 
-export const startGetPlayers = () => ({
+export const startGetPlayers = (filters?: filtersGenericPage) => ({
 	type: START_GET_PLAYERS,
+	payload: filters,
 });
 
 export const successfulGetPlayers = (data: responseGetPlayers) => ({
@@ -52,4 +58,18 @@ export const successfulGetPlayerStatus = (status: statusType[]) => ({
 
 export const errorGetPlayerStatus = () => ({
 	type: ERROR_GET_PLAYER_STATUS,
+});
+
+export const startGetPlayerSelected = (id: number) => ({
+	type: START_GET_PLAYER_SELECTED,
+	payload: id,
+});
+// cambiar
+export const successfulGetPlayerSelected = (player: playerType) => ({
+	type: SUCCESSFUL_GET_PLAYER_SELECTED,
+	payload: player,
+});
+
+export const errorGetPlayerSelected = () => ({
+	type: ERROR_GET_PLAYER_SELECTED,
 });
