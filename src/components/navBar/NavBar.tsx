@@ -5,14 +5,16 @@ import Button from "@mui/material/Button";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import "./navBar.css";
-import { useNavigate } from "react-router-dom";
-import homeIcon from "../../assets/icons/logo-NFL.png";
+import { useLocation, useNavigate } from "react-router-dom";
+import homeIcon from "../../assets/icons/National_Football_League_logo.png";
+import arrowWhite from "../../assets/icons/arrow-white.svg";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LoginUser from "../logInUser/LoginUser";
 import { Menu, MenuItem } from "@mui/material";
 
 export default function NavBar() {
 	const navegation = useNavigate();
+	const location = useLocation();
 	const [openModal, setOpenModal] = useState(false);
 	const handleOpen = () => setOpenModal(true);
 	const handleClose = () => setOpenModal(false);
@@ -43,13 +45,29 @@ export default function NavBar() {
 					style={{ backgroundColor: "var(--nav_bar-color)" }}
 				>
 					<div className="nav_bar-tool_bar">
+						<ul className="nav_bar-ul">
+							<li className={`button ${location.pathname != "/"?"visible": "hidden"}`} onClick={() => navegation(-1)}>
+								<img
+								src={arrowWhite}
+								alt="arrow"
+							/>	
+							</li>
+							<li className={`button ${location.pathname == "/"?"page_selected": ""}`} onClick={() => navegation("/")}>
+								home
+							</li>
+							<li className={`button ${location.pathname == "/Teams"?"page_selected": ""}`} onClick={() => navegation("/Teams")}>
+								teams
+							</li>
+							<li className={`button ${location.pathname == "/Players"?"page_selected": ""}`} onClick={() => navegation("/Players")}>
+								players
+							</li>
+						</ul>
 						<img
 							src={homeIcon}
 							className="nav_bar-img button"
-							alt="#"
+							alt="logo_NFL"
 							onClick={() => navegation("/")}
 						/>
-						<h1 className="nav_bar-h1">NFL</h1>
 						<div className="nav_bar-buttons">
 							<Button color="inherit">
 								<a

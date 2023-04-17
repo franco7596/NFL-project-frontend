@@ -1,24 +1,31 @@
 @import url("./normalize.css");
 
 :root {
-	--nav_bar-color: #013369;
-	--white-color: #fff;
-	--red-color: #ff4655;
-	--black-color: #0f1923;
-	--blackground-sub-icon: #eee8e8;
-	--blackground-icon: #f1ebeb;
-	--blackground-card-player: #f1ebeb;
+  --nav_bar-color: #000852;
+  --white-color: #fff;
+  --red-color: #ff4655;
+  --black-color: #0f1923;
+  --blackground-sub-icon: #eee8e8;
+  --blackground-icon: #f1ebeb;
+  --blackground-card-player: #f1ebeb;
 
-	--font-size-h1: 5rem;
+  --font-size-h1: 5rem;
 
-	--heroe-image-teams: url("./assets/heroeImages/hero-image-teams.jpg");
-	--heroe-image-players: url("./assets/heroeImages/hero-image-players.jpg");
-	--field-american-football: url("./assets/fields/field-american-footbal.jpg");
+  --heroe-image-teams: url("./assets/heroeImages/hero-image-teams.jpg");
+  --heroe-image-players: url("./assets/heroeImages/hero-image-players.jpg");
+  --field-american-football: url("./assets/fields/field-american-footbal.jpg");
 }
 #root {
-	min-height: 100vh;
+  min-height: 100vh;
 }
 
 .button {
-	cursor: pointer;
+  cursor: pointer;
+  user-select: none;
+}
+.visible {
+  display: block;
+}
+.hidden {
+  display: none;
 }

@@ -1,43 +1,58 @@
+.banner {
+  background-image: linear-gradient(75deg, #00031e 27%, #000852 59%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner h1 {
+  text-transform: uppercase;
+  font-family: BebasNeue;
+  font-size: 4rem;
+  text-align: center;
+  color: var(--white-color);
+  margin: 0;
+}
 .home-container-teams {
-	background-image: var(--heroe-image-teams);
-	background-repeat: no-repeat;
-	background-size: cover;
-	min-height: 100vh;
+  background-image: var(--heroe-image-teams);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
 }
 .home-container-players {
-	background-image: var(--heroe-image-players);
-	background-repeat: no-repeat;
-	background-size: cover;
-	min-height: 100vh;
+  background-image: var(--heroe-image-players);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 .home-div-button {
-	background-color: rgba(0, 0, 0, 0.73);
-	min-height: inherit;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  background-color: rgba(0, 0, 0, 0.73);
+  min-height: inherit;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-button {
-	border: 0;
-	background-color: transparent;
-	text-decoration: none;
+  border: 0;
+  background-color: transparent;
+  text-decoration: none;
 }
 .grow {
-	transition: 0.5s, color 0.1s;
-	-webkit-transition: 0.5s, color 0.1s;
-	-moz-transition: 0.5s, color 0.1s;
+  transition: 0.5s, color 0.1s;
+  -webkit-transition: 0.5s, color 0.1s;
+  -moz-transition: 0.5s, color 0.1s;
 }
 .grow:hover {
-	transform: scale3d(1.5, 1.5, 0.3);
-	-webkit-transform: scale3d(1.5, 1.5, 0.3);
-	-moz-transform: scale3d(1.5, 1.5, 0.3);
+  transform: scale3d(1.5, 1.5, 0.3);
+  -webkit-transform: scale3d(1.5, 1.5, 0.3);
+  -moz-transform: scale3d(1.5, 1.5, 0.3);
 }
 
 .home-h1 {
-	color: var(--white-color);
-	font-size: var(--font-size-h1);
-	font-family: fantasy;
+  color: var(--white-color);
+  font-size: var(--font-size-h1);
+  font-family: fantasy;
 }
