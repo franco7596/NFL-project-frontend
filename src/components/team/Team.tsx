@@ -10,7 +10,6 @@ import "./team.css";
 import { startGetTeamSelected } from "../../redux/actions/teamsAction";
 import PlayersFild from "./PlayersFild";
 import positionsTeam from "../../helpers/positionsTeam.json";
-import emptyPlayer from "../../assets/players/EmptyPlayer.svg";
 import { playerType } from "../../redux/types/players/playersTypeData";
 import { v4 as uuidv4 } from "uuid";
 import TablePlayers from "../players/TablePlayers";
@@ -19,9 +18,6 @@ import Loading from "../loading/Loading";
 export default function Team() {
 	const { idTeam } = useParams();
 	const dispach = useDispatch();
-	const [playersByTeamFiltered, setplayersByTeamFiltered] = useState<
-		playerType[] | null
-	>(null);
 	const [filterBy, setFilterBy] = useState("all");
 	const [searchPlayer, setSearchPlayer] = useState("");
 	const playersByTeam = useSelector(
@@ -47,10 +43,6 @@ export default function Team() {
 			dispach(startGetTeamSelected(parseInt(idTeam)));
 		}
 	}, [idTeam]);
-
-	useEffect(() => {
-		setplayersByTeamFiltered(playersByTeam);
-	}, [playersByTeam]);
 
 	const handleFilterStatus = (playerStatus: string) => {
 		setFilterBy(playerStatus);
@@ -85,7 +77,6 @@ export default function Team() {
 						.includes(searchText.toLowerCase())
 			);
 		if (!playersFilted) playersFilted = null;
-		setplayersByTeamFiltered(playersFilted);
 	};
 
 	return playersByTeam && teamSelected && !playersLoading && !teamLoading ? (

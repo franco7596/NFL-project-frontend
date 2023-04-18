@@ -1,31 +1,38 @@
 @import url("./normalize.css");
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
 
 :root {
-  --nav_bar-color: #000852;
-  --white-color: #fff;
-  --red-color: #ff4655;
-  --black-color: #0f1923;
-  --blackground-sub-icon: #eee8e8;
-  --blackground-icon: #f1ebeb;
-  --blackground-card-player: #f1ebeb;
+	--nav_bar-color: #000852;
+	--white-color: #fff;
+	--red-color: #d50a0a;
+	--blue-color: #212d9b;
+	--black-color: #0f1923;
+	--blackground-sub-icon: #eee8e8;
+	--blackground-icon: #f1ebeb;
+	--blackground-card-player: #f1ebeb;
 
-  --font-size-h1: 5rem;
+	--font-size-h1: 5rem;
 
-  --heroe-image-teams: url("./assets/heroeImages/hero-image-teams.jpg");
-  --heroe-image-players: url("./assets/heroeImages/hero-image-players.jpg");
-  --field-american-football: url("./assets/fields/field-american-footbal.jpg");
+	--font-family-titles: BebasNeue;
+	--heroe-image-teams: url("./assets/heroeImages/hero-image-teams.jpg");
+	--heroe-image-players: url("./assets/heroeImages/hero-image-players.jpg");
+	--field-american-football: url("./assets/fields/field-american-footbal.jpg");
 }
-#root {
-  min-height: 100vh;
+body {
+	background-color: #f9f9f9;
+	background-image: url("./assets/pattern/pattern.png");
+	background-size: cover;
 }
 
 .button {
-  cursor: pointer;
-  user-select: none;
+	cursor: pointer;
+	user-select: none;
+	text-transform: uppercase;
 }
 .visible {
-  display: block;
+	display: block;
 }
 .hidden {
-  display: none;
+	display: none;
 }
