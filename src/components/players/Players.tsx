@@ -5,9 +5,9 @@ import {
 	startGetPlayerStatus,
 } from "../../redux/actions/playersAction";
 import { stateType } from "../../redux/store";
-import FilterCard from "../filtersSorter/FilterCard";
-import SearchBoard from "../filtersSorter/SearchBoard";
-import SortCard from "../filtersSorter/SortCard";
+import FilterCard from "../filters/FilterCard";
+import SearchBoard from "../filters/SearchBoard";
+import SortCard from "../filters/SortCard";
 import Loading from "../loading/Loading";
 import TablePlayers from "./TablePlayers";
 

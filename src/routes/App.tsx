@@ -11,6 +11,7 @@ export default function App() {
 	return (
 		<HashRouter>
 			<NavBar />
+			<div className="pattern" />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/Teams" element={<Teams />} />

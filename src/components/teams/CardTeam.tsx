@@ -13,13 +13,10 @@ export default function CardTeam({ team }: newTeamType) {
 			style={{ backgroundImage: `url(${team.images.background_1})` }}
 		>
 			<div className="card-team-header">
-				<h3 className="card-team-title">{team.infoTeam.name}</h3>
-				<img className="card-team-logo" src={team.images.logo} />
+				<h3>{team.infoTeam.name}</h3>
+				<img src={team.images.logo} />
 			</div>
-			<h4>{team.division.name}</h4>
-			<p>
-				{team.games.won}-{team.games.lost}-{team.games.tied}
-			</p>
+			<span className="card-team-division">{team.division.name}</span>
 			<div className="card-team-foot">
 				<Link to={`/team/${team.id}`}>
 					<button className="button-team">{`About ${team.infoTeam.name}`}</button>

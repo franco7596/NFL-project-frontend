@@ -9,9 +9,9 @@ import { stateType } from "../../redux/store";
 import CardTeam from "./CardTeam";
 import "./teams.css";
 import { v4 as uuidv4 } from "uuid";
-import SearchBoard from "../filtersSorter/SearchBoard";
-import FilterCard from "../filtersSorter/FilterCard";
-import SortCard from "../filtersSorter/SortCard";
+import SearchBoard from "../filters/SearchBoard";
+import FilterCard from "../filters/FilterCard";
+import SortCard from "../filters/SortCard";
 import Loading from "../loading/Loading";
 
 type checkBoxType = {
@@ -98,27 +98,29 @@ export default function Teams() {
 				handleSearch={handleSearchInput}
 				placeholder={"TEAM NAME..."}
 			/>
-			<div>
-				{divisions !== null && (
-					<FilterCard
-						typeOfFilter="filtered by division"
-						optionsCheck={divisions}
-						handleCheck={handleCheckDivision}
+			<span>
+				<div className="filters-section">
+					{divisions !== null && (
+						<FilterCard
+							typeOfFilter="filtered by division"
+							optionsCheck={divisions}
+							handleCheck={handleCheckDivision}
+						/>
+					)}
+					<SortCard
+						typeOfSort="Games Won"
+						handleSort={handleRadioSort}
+						sortSelected={sortSelected}
+						optionsToSort={optionsToSortByGamesWon}
 					/>
-				)}
-				<SortCard
-					typeOfSort="Games Won"
-					handleSort={handleRadioSort}
-					sortSelected={sortSelected}
-					optionsToSort={optionsToSortByGamesWon}
-				/>
-				<SortCard
-					typeOfSort="Age"
-					handleSort={handleRadioSort}
-					sortSelected={sortSelected}
-					optionsToSort={optionsToSortByAge}
-				/>
-			</div>
+					<SortCard
+						typeOfSort="Age"
+						handleSort={handleRadioSort}
+						sortSelected={sortSelected}
+						optionsToSort={optionsToSortByAge}
+					/>
+				</div>
+			</span>
 			{teams && (
 				<ul className="teams-ul">
 					{teams.map((team) => (

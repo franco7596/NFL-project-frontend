@@ -1,13 +1,14 @@
 @import url("./normalize.css");
-@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
 
 :root {
 	--nav_bar-color: #000852;
 	--white-color: #fff;
 	--red-color: #d50a0a;
 	--blue-color: #212d9b;
+	--buttons-card-team-color: #0d6ec9;
 	--black-color: #0f1923;
+	--card-filter-color: #f0efef;
+	--selector-color: #bfbdbf;
 	--blackground-sub-icon: #eee8e8;
 	--blackground-icon: #f1ebeb;
 	--blackground-card-player: #f1ebeb;
@@ -15,14 +16,24 @@
 	--font-size-h1: 5rem;
 
 	--font-family-titles: BebasNeue;
+	--font-family-filters: Montserrat;
 	--heroe-image-teams: url("./assets/heroeImages/hero-image-teams.jpg");
 	--heroe-image-players: url("./assets/heroeImages/hero-image-players.jpg");
 	--field-american-football: url("./assets/fields/field-american-footbal.jpg");
+
+	--box-shadow-cards: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 body {
 	background-color: #f9f9f9;
+}
+.pattern {
 	background-image: url("./assets/pattern/pattern.png");
 	background-size: cover;
+	position: fixed;
+	z-index: -10;
+	width: 100%;
+	height: 100%;
+	opacity: 0.08;
 }
 
 .button {
