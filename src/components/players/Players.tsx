@@ -10,6 +10,7 @@ import SearchBoard from "../filters/SearchBoard";
 import SortCard from "../filters/SortCard";
 import Loading from "../loading/Loading";
 import TablePlayers from "./TablePlayers";
+import "./players.css";
 
 const optionsToSortByExperience = [
 	{
@@ -104,30 +105,34 @@ export default function Players() {
 	};
 
 	return (
-		<section className="">
+		<section className="teams-section">
 			<SearchBoard
 				handleSearch={handleSearchInput}
 				placeholder={"PLAYER NAME..."}
 			/>
-			{playerStatus !== null && (
-				<FilterCard
-					typeOfFilter="Player Status"
-					optionsCheck={playerStatus}
-					handleCheck={handleCheckDivision}
-				/>
-			)}
-			<SortCard
-				typeOfSort="Experience"
-				handleSort={handleRadioSort}
-				sortSelected={sortSelected}
-				optionsToSort={optionsToSortByExperience}
-			/>
-			<SortCard
-				typeOfSort="Age"
-				handleSort={handleRadioSort}
-				sortSelected={sortSelected}
-				optionsToSort={optionsToSortByAge}
-			/>
+			<span>
+				<div className="filters-section">
+					{playerStatus !== null && (
+						<FilterCard
+							typeOfFilter="Player Status"
+							optionsCheck={playerStatus}
+							handleCheck={handleCheckDivision}
+						/>
+					)}
+					<SortCard
+						typeOfSort="Experience"
+						handleSort={handleRadioSort}
+						sortSelected={sortSelected}
+						optionsToSort={optionsToSortByExperience}
+					/>
+					<SortCard
+						typeOfSort="Age"
+						handleSort={handleRadioSort}
+						sortSelected={sortSelected}
+						optionsToSort={optionsToSortByAge}
+					/>
+				</div>
+			</span>
 			{players !== null && !playersLoading ? (
 				<TablePlayers
 					players={players}

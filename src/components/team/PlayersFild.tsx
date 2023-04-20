@@ -1,5 +1,6 @@
 import React from "react";
 import { playerType } from "../../redux/types/players/playersTypeData";
+import "./fields.css";
 type teamParam = {
 	team: playerType[];
 	positions: {
@@ -28,21 +29,19 @@ export default function PlayersFild({ team, positions }: teamParam) {
 			}
 			players.push(playerIndex);
 		});
-		return positions.map((position, index) => {
-			return (
-				<div
-					key={index}
-					className="box"
-					style={{
-						backgroundImage: `url(${team[players[index]].images.photo})`,
-						top: `${position.positionY}px`,
-						left: `${position.positionX}px`,
-					}}
-				>
-					<h5>{position.namePosition}</h5>
-				</div>
-			);
-		});
+		return positions.map((position, index) => (
+			<div
+				key={index}
+				className="box-player"
+				style={{
+					backgroundImage: `url(${team[players[index]].images.photo})`,
+					top: `${position.positionY}%`,
+					left: `${position.positionX}%`,
+				}}
+			>
+				<h5>{position.namePosition}</h5>
+			</div>
+		));
 	};
 
 	function getRandomInt(max: number) {

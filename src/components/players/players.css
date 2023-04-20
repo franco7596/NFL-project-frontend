@@ -1,0 +1,29 @@
+.players-section {
+	display: grid;
+	grid-template-rows: 150px 1fr 100%;
+}
+.players-section > div {
+	display: flex;
+	justify-content: center;
+}
+@media (min-width: 700px) {
+	.players-section {
+		grid-template-rows: 150px 90%;
+		grid-template-columns: 1fr 1fr;
+	}
+	.players-section > div {
+		display: block;
+	}
+}
+@media (min-width: 1000px) {
+	.players-section {
+		grid-template-rows: 150px 90%;
+		grid-template-columns: 1fr 2fr;
+	}
+}
+@media (min-width: 1400px) {
+	.players-section {
+		grid-template-rows: 150px 90%;
+		grid-template-columns: 1fr 3fr;
+	}
+}

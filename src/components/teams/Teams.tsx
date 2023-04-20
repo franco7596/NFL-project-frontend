@@ -98,7 +98,7 @@ export default function Teams() {
 				handleSearch={handleSearchInput}
 				placeholder={"TEAM NAME..."}
 			/>
-			<span>
+			<div>
 				<div className="filters-section">
 					{divisions !== null && (
 						<FilterCard
@@ -120,7 +120,7 @@ export default function Teams() {
 						optionsToSort={optionsToSortByAge}
 					/>
 				</div>
-			</span>
+			</div>
 			{teams && (
 				<ul className="teams-ul">
 					{teams.map((team) => (

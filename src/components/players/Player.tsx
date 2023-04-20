@@ -30,8 +30,6 @@ export default function Player() {
 			className="player-card"
 			style={{
 				backgroundImage: `url(${currentTeam?.images.background_1}) `,
-				backgroundSize: "cover",
-				backgroundRepeat: "no-repeat",
 			}}
 		>
 			{playerSelected && (
@@ -41,8 +39,6 @@ export default function Player() {
 							className="card card-body player-card-container"
 							style={{
 								backgroundImage: `url(${currentTeam?.images.background_2}) `,
-								backgroundSize: "cover",
-								backgroundRepeat: "no-repeat",
 							}}
 						>
 							<div className="player-card-header">

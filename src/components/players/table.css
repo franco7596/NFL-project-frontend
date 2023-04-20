@@ -1,36 +1,77 @@
-.info-table {
-	width: 100%;
-	border-collapse: collapse;
-	border-spacing: 0;
-	box-shadow: 0 2px 15px rgba(64, 64, 64, 0.7);
-	border-radius: 12px 12px 0 0;
-	overflow: hidden;
+.table-players-container {
+	margin: 0 10px;
 }
-.info-table-tr,
-.info-table-th {
+.table-players {
+	width: 100%;
+	border-radius: 20px;
+	overflow: hidden;
+	padding: 0 20px;
+}
+.table-players-thead,
+.table-players-thead * {
 	padding: 15px 20px;
 	text-align: center;
 }
-.info-table-th {
-	background-color: var(--nav_bar-color);
-	color: #fafafa;
+.table-players-thead th {
+	background-color: var(--table-header-color);
+	color: var(--white-color);
 	font-family: "Open Sans", Sans-serif;
 	font-weight: 200;
 	text-transform: uppercase;
 }
-.info-table-tr {
+
+.table-players-tbody {
 	width: 100%;
-	background-color: #fafafa;
-	font-family: "Montserrat", sans-serif;
+	background-color: var(--back-table-color);
+	font-family: var(--font-family-filters);
+}
+.players-table-img {
+	height: 60px;
+	width: 60px;
+}
+.table-players-tbody td {
+	text-align: center;
+	border: 1px solid var(--lines-table-color);
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.table-players-tbody a {
+	text-decoration: none;
+	color: inherit;
+	display: contents;
+}
+.table-players-tbody td:nth-child(n + 4),
+.table-players-thead th:nth-child(n + 4) {
+	display: none;
+}
+.td-with-padding {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.table_pagination-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+.table_pagination-container > div {
+	background-color: var(--back-table-color);
+	border-radius: 26px;
+	box-shadow: var(--box-shadow-cards);
 }
 
-.info-table-td-player_name {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	padding-left: 20%;
-	gap: 40px;
+@media (min-width: 1000px) {
+	.table-players-tbody td:nth-child(n + 4),
+	.table-players-thead th:nth-child(n + 4) {
+		display: table-cell;
+	}
+	.table-players-tbody td:nth-child(n + 5),
+	.table-players-thead th:nth-child(n + 5) {
+		display: none;
+	}
 }
-.info-table-tr:nth-child(even) {
-	background-color: #eeeeee;
+@media (min-width: 1400px) {
+	.table-players-tbody td:nth-child(n + 5),
+	.table-players-thead th:nth-child(n + 5) {
+		display: table-cell;
+	}
 }

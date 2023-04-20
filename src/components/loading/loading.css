@@ -1,16 +1,15 @@
 .loading-container {
 	background-color: var(--black-color);
-	opacity: 0.8;
 	height: 100%;
-	width: 100vw;
+	width: 100%;
 	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .loader {
-	width: 200px;
-	height: 200px;
+	width: 300px;
+	height: 300px;
 	border-radius: 50%;
 	position: relative;
 	animation: rotate 1s linear infinite;
@@ -22,13 +21,27 @@
 	position: absolute;
 	inset: 0px;
 	border-radius: 50%;
-	border: 5px solid #fff;
+	border: 5px solid var(--white-color);
 	animation: prixClipFix 2s linear infinite;
 }
 .loader::after {
 	inset: 8px;
 	transform: rotate3d(90, 90, 0, 180deg);
-	border-color: #ff3d00;
+	border-color: var(--red-color);
+}
+.loader-image {
+	position: absolute;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+}
+.loader-image img {
+	height: 250px;
+}
+.loader-image h3 {
+	color: var(--white-color);
 }
 
 @keyframes rotate {

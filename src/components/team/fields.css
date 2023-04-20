@@ -1,0 +1,63 @@
+/* height: 529px; Y 0.189 
+width: 900px; X 0.111 */
+/* height: 132px;
+width: 225px; */
+.field-image {
+	height: 132px;
+	width: 225px;
+	background-image: var(--field-american-football);
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+}
+.box-player {
+	position: absolute;
+	color: var(--white-color);
+	height: 13%;
+	width: 8%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+.box-player > h5 {
+	display: none;
+	margin: 0;
+	font-size: 0.8rem;
+	text-shadow: 0 0 2px BLACK;
+}
+
+@media (min-width: 500px) {
+	.field-image {
+		height: 262px;
+		width: 445px;
+	}
+}
+@media (min-width: 700px) {
+	.field-image {
+		height: 362px;
+		width: 615px;
+	}
+	.box-player > h5 {
+		display: block;
+	}
+}
+@media (min-width: 1000px) {
+	.field-image {
+		height: 529px;
+		width: 900px;
+	}
+	.box-player > h5 {
+		font-size: 1rem;
+	}
+}
+@media (min-width: 1400px) {
+	.field-image {
+		height: 700px;
+		width: 1200px;
+	}
+	.box-player > h5 {
+		font-size: 1.5rem;
+	}
+}

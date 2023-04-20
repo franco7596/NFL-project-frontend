@@ -3,136 +3,136 @@
 		{
 			"namePosition": "DE",
 			"namePositionsEquivalent": ["DE"],
-			"positionX": 360,
-			"positionY": 120
+			"positionX": 39.96,
+			"positionY": 22.68
 		},
 		{
 			"namePosition": "DL",
 			"namePositionsEquivalent": ["DL", "CB"],
-			"positionX": 360,
-			"positionY": 180
+			"positionX": 39.6,
+			"positionY": 34.02
 		},
 		{
 			"namePosition": "DL",
 			"namePositionsEquivalent": ["DL", "CB"],
-			"positionX": 360,
-			"positionY": 250
+			"positionX": 39.6,
+			"positionY": 47.25
 		},
 		{
 			"namePosition": "DE",
 			"namePositionsEquivalent": ["DE"],
-			"positionX": 360,
-			"positionY": 320
+			"positionX": 39.6,
+			"positionY": 60.48
 		},
 		{
 			"namePosition": "CB",
 			"namePositionsEquivalent": ["CB"],
-			"positionX": 300,
-			"positionY": 100
+			"positionX": 33.3,
+			"positionY": 18.9
 		},
 		{
 			"namePosition": "CB",
 			"namePositionsEquivalent": ["CB"],
-			"positionX": 300,
-			"positionY": 350
+			"positionX": 33.3,
+			"positionY": 66.15
 		},
 		{
 			"namePosition": "LB",
 			"namePositionsEquivalent": ["LB", "CB"],
-			"positionX": 260,
-			"positionY": 164
+			"positionX": 28.86,
+			"positionY": 30.996
 		},
 		{
 			"namePosition": "LB",
 			"namePositionsEquivalent": ["LB", "CB"],
-			"positionX": 240,
-			"positionY": 224
+			"positionX": 26.64,
+			"positionY": 42.336
 		},
 		{
 			"namePosition": "LB",
 			"namePositionsEquivalent": ["LB", "CB"],
-			"positionX": 260,
-			"positionY": 280
+			"positionX": 28.86,
+			"positionY": 52.92
 		},
 		{
 			"namePosition": "FS",
 			"namePositionsEquivalent": ["FS", "S"],
-			"positionX": 180,
-			"positionY": 170
+			"positionX": 19.98,
+			"positionY": 32.13
 		},
 		{
 			"namePosition": "SS",
 			"namePositionsEquivalent": ["SS", "SAF"],
-			"positionX": 180,
-			"positionY": 310
+			"positionX": 19.98,
+			"positionY": 58.59
 		}
 	],
 	"attackPositions": [
 		{
 			"namePosition": "WR",
 			"namePositionsEquivalent": ["WR"],
-			"positionX": 475,
-			"positionY": 60
+			"positionX": 52.725,
+			"positionY": 11.34
 		},
 		{
 			"namePosition": "OT",
 			"namePositionsEquivalent": ["OT", "T"],
-			"positionX": 455,
-			"positionY": 117
+			"positionX": 50.505,
+			"positionY": 22.113
 		},
 		{
 			"namePosition": "OG",
 			"namePositionsEquivalent": ["OG", "G"],
-			"positionX": 455,
-			"positionY": 171
+			"positionX": 50.505,
+			"positionY": 32.319
 		},
 		{
 			"namePosition": "C",
 			"namePositionsEquivalent": ["C"],
-			"positionX": 455,
-			"positionY": 226
+			"positionX": 50.505,
+			"positionY": 42.714
 		},
 		{
 			"namePosition": "OG",
 			"namePositionsEquivalent": ["OG", "G"],
-			"positionX": 455,
-			"positionY": 279
+			"positionX": 50.505,
+			"positionY": 52.731
 		},
 		{
 			"namePosition": "OT",
 			"namePositionsEquivalent": ["OT", "T"],
-			"positionX": 455,
-			"positionY": 335
+			"positionX": 50.505,
+			"positionY": 63.315
 		},
 		{
 			"namePosition": "TE",
 			"namePositionsEquivalent": ["TE"],
-			"positionX": 455,
-			"positionY": 390
+			"positionX": 50.505,
+			"positionY": 73.71
 		},
 		{
 			"namePosition": "QB",
 			"namePositionsEquivalent": ["QB"],
-			"positionX": 506,
-			"positionY": 226
+			"positionX": 56.166,
+			"positionY": 42.714
 		},
 		{
 			"namePosition": "WR",
 			"namePositionsEquivalent": ["WR"],
-			"positionX": 548,
-			"positionY": 422
+			"positionX": 60.828,
+			"positionY": 79.758
 		},
 		{
 			"namePosition": "FB",
 			"namePositionsEquivalent": ["FB", "RB"],
-			"positionX": 590,
-			"positionY": 226
+			"positionX": 65.49,
+			"positionY": 42.714
 		},
 		{
 			"namePosition": "TB",
 			"namePositionsEquivalent": ["TB", "RB"],
-			"positionX": 670,
-			"positionY": 226
+			"positionX": 74.37,
+			"positionY": 42.714
 		}
 	]
 }

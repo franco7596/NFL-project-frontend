@@ -6,8 +6,11 @@
 	--red-color: #d50a0a;
 	--blue-color: #212d9b;
 	--buttons-card-team-color: #0d6ec9;
+	--table-header-color: #0d6ec9;
 	--black-color: #0f1923;
 	--card-filter-color: #f0efef;
+	--back-table-color: #f9f9f9;
+	--lines-table-color: #e2e2e2;
 	--selector-color: #bfbdbf;
 	--blackground-sub-icon: #eee8e8;
 	--blackground-icon: #f1ebeb;
@@ -15,11 +18,11 @@
 
 	--font-size-h1: 5rem;
 
-	--font-family-titles: BebasNeue;
-	--font-family-filters: Montserrat;
+	--font-family-titles: "BebasNeue", sans-serif;
+	--font-family-filters: "Montserrat", sans-serif;
 	--heroe-image-teams: url("./assets/heroeImages/hero-image-teams.jpg");
 	--heroe-image-players: url("./assets/heroeImages/hero-image-players.jpg");
-	--field-american-football: url("./assets/fields/field-american-footbal.jpg");
+	--field-american-football: url("./assets/fields/field.png");
 
 	--box-shadow-cards: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
