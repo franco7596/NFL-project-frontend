@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
 	startGetPlayersByTeam,
+	startGetPlayersByTeamTable,
 	startGetPlayerStatus,
 } from "../../redux/actions/playersAction";
 import { stateType } from "../../redux/store";
@@ -10,7 +11,10 @@ import "./team.css";
 import { startGetTeamSelected } from "../../redux/actions/teamsAction";
 import PlayersFild from "./PlayersFild";
 import positionsTeam from "../../helpers/positionsTeam.json";
-import { playerType } from "../../redux/types/players/playersTypeData";
+import {
+	getPlayersByIdTeam,
+	playerType,
+} from "../../redux/types/players/playersTypeData";
 import { v4 as uuidv4 } from "uuid";
 import TablePlayers from "../players/TablePlayers";
 import Loading from "../loading/Loading";
@@ -23,6 +27,9 @@ export default function Team() {
 	const [searchPlayer, setSearchPlayer] = useState("");
 	const playersByTeam = useSelector(
 		(state: stateType) => state.players.playersByTeam
+	);
+	const playersByTeamTable = useSelector(
+		(state: stateType) => state.players.playersByTeamTable
 	);
 	const playersLoading = useSelector(
 		(state: stateType) => state.players.loading
@@ -40,10 +47,19 @@ export default function Team() {
 
 	useEffect(() => {
 		if (idTeam) {
-			dispach(startGetPlayersByTeam(parseInt(idTeam)));
+			dispach(startGetPlayersByTeam({ id_team: parseInt(idTeam) }));
+			dispach(startGetPlayersByTeamTable({ id_team: parseInt(idTeam) }));
 			dispach(startGetTeamSelected(parseInt(idTeam)));
 		}
 	}, [idTeam]);
+	useEffect(() => {
+		if (idTeam) {
+			let request: getPlayersByIdTeam = { id_team: parseInt(idTeam) };
+			if (filterBy !== "all") request.status = filterBy;
+			if (searchPlayer !== "") request.search_Inpit = searchPlayer;
+			dispach(startGetPlayersByTeamTable(request));
+		}
+	}, [searchPlayer, filterBy]);
 
 	const handleFilterStatus = (playerStatus: string) => {
 		setFilterBy(playerStatus);
@@ -80,7 +96,7 @@ export default function Team() {
 		if (!playersFilted) playersFilted = null;
 	};
 
-	return playersByTeam && teamSelected && !playersLoading && !teamLoading ? (
+	return playersByTeam && teamSelected && !teamLoading ? (
 		<div className="team-container">
 			<div
 				className="team-container-info"
@@ -162,7 +178,9 @@ export default function Team() {
 					handleSearch={handleSearchPlayer}
 				/>
 			</div>
-			{playersByTeam !== null && <TablePlayers players={playersByTeam} />}
+			{playersByTeamTable !== null && (
+				<TablePlayers players={playersByTeamTable} />
+			)}
 		</div>
 	) : (
 		<Loading />

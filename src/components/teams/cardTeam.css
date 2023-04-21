@@ -45,6 +45,9 @@
 	justify-content: center;
 	align-items: center;
 }
+.card-team-foot > a:hover {
+	text-decoration: none;
+}
 
 .button-team {
 	height: 55px;

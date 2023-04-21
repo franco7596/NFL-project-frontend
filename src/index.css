@@ -29,6 +29,9 @@
 body {
 	background-color: #f9f9f9;
 }
+#root > *:nth-child(3) {
+	padding-bottom: 180px;
+}
 .pattern {
 	background-image: url("./assets/pattern/pattern.png");
 	background-size: cover;

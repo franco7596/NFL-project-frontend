@@ -2,10 +2,12 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import {
 	errorGetPlayers,
 	errorGetPlayersByTeam,
+	errorGetPlayersByTeamTable,
 	errorGetPlayerSelected,
 	errorGetPlayerStatus,
 	successfulGetPlayers,
 	successfulGetPlayersByTeam,
+	successfulGetPlayersByTeamTable,
 	successfulGetPlayerSelected,
 	successfulGetPlayerStatus,
 } from "../actions/playersAction";
@@ -13,6 +15,7 @@ import {
 import {
 	START_GET_PLAYERS,
 	START_GET_PLAYERS_BY_TEAM,
+	START_GET_PLAYERS_BY_TEAM_TABLE,
 	START_GET_PLAYER_SELECTED,
 	START_GET_PLAYER_STATUS,
 } from "../types";
@@ -56,17 +59,34 @@ function* getPlayers(info: actionStartGetPlayers) {
 		yield put(errorGetPlayers());
 	}
 }
-function* getPlayersByTeam(info: actionSuccessfulGetplayers) {
+function* getPlayersByTeam(info: actionStartGetPlayerById) {
 	try {
 		const infoRequest: infoRequestType = {
-			method: "GET",
-			url: `getPlayersByTeam?id_team= ${info.payload}`,
+			method: "POST",
+			url: `getPlayersByTeam?id_team= ${info.payload.id_team}`,
 		};
 		const player: responseGetPlayersByTeam = yield call(apiCall, infoRequest);
 		if (player.status !== 200) throw new Error(player.statusText);
 		yield put(successfulGetPlayersByTeam(player.players));
 	} catch (error) {
 		yield put(errorGetPlayersByTeam());
+	}
+}
+function* getPlayersByTeamTable(info: actionStartGetPlayerById) {
+	try {
+		const infoRequest: infoRequestType = {
+			method: "POST",
+			url: `getPlayersByTeam?id_team=${info.payload.id_team}`,
+			data: {
+				status: info.payload?.status,
+				searchInpit: info.payload?.search_Inpit,
+			},
+		};
+		const player: responseGetPlayersByTeam = yield call(apiCall, infoRequest);
+		if (player.status !== 200) throw new Error(player.statusText);
+		yield put(successfulGetPlayersByTeamTable(player.players));
+	} catch (error) {
+		yield put(errorGetPlayersByTeamTable());
 	}
 }
 function* getPlayerById(info: actionStartGetPlayerById) {
@@ -102,6 +122,7 @@ function* getPlayerStatus() {
 export default function* players() {
 	yield takeEvery(START_GET_PLAYERS, getPlayers);
 	yield takeEvery(START_GET_PLAYERS_BY_TEAM, getPlayersByTeam);
+	yield takeEvery(START_GET_PLAYERS_BY_TEAM_TABLE, getPlayersByTeamTable);
 	yield takeEvery(START_GET_PLAYER_STATUS, getPlayerStatus);
 	yield takeEvery(START_GET_PLAYER_SELECTED, getPlayerById);
 }

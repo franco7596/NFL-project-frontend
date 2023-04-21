@@ -32,92 +32,88 @@ export default function Player() {
 				backgroundImage: `url(${currentTeam?.images.background_1}) `,
 			}}
 		>
+			<h3>{currentTeam?.infoTeam.name}</h3>
 			{playerSelected && (
-				<div className="player-card-size">
-					<Tilt scale={1.1}>
-						<div
-							className="card card-body player-card-container"
-							style={{
-								backgroundImage: `url(${currentTeam?.images.background_2}) `,
-							}}
-						>
-							<div className="player-card-header">
-								<div className="player-card-header-info">
-									<div className="player-card-header-name">
-										<h2 className="player-card-header-h2">
-											{playerSelected.infoPlayer.name}
-										</h2>
-										<hr className="player-card-header-hr" />
-									</div>
-									<div className="player-card-header-number">
-										<h2 className="player-card-header-h2">NUMBER</h2>
-										<h3 className="player-card-header-h3">
-											#{playerSelected.infoCurrentTeam.number}
-										</h3>
-									</div>
-									<div className="player-card-header-position">
-										<h2 className="player-card-header-h2">
-											{playerSelected.infoCurrentTeam.position}
-										</h2>
-										<hr className="player-card-header-hr" />
-									</div>
-									<div className="player-card-header-status">
-										<h2 className="player-card-header-h2">
-											{playerSelected.infoCurrentTeam.status}
-										</h2>
-										<hr className="player-card-header-hr" />
-									</div>
-								</div>
-								<div className="player-card-image-container">
-									<img
-										className="player-card-image-player"
-										src={
-											playerSelected.images.photo !== ""
-												? playerSelected.images.photo
-												: emptyPlayer
-										}
-									/>
-									<div className="player-card-container-image-team">
-										<img
-											className="player-card-image-team"
-											src={playerSelected.infoCurrentTeam.image}
-										/>
-									</div>
-								</div>
+				<Tilt scale={1.1}>
+					<div
+						className="player-card-container"
+						style={{
+							backgroundImage: `url(${currentTeam?.images.background_2}) `,
+						}}
+					>
+						<div className="player-card-header">
+							<span>{playerSelected.infoPlayer.name}</span>
+							<span>{playerSelected.infoCurrentTeam.position}</span>
+							<div>
+								<span>NUMBER</span>
+								<span>#{playerSelected.infoCurrentTeam.number}</span>
 							</div>
-							<ul className="player-card-body">
-								{playerSelected.infoPlayer.arms && (
-									<li className="player-card-body-item">
-										<h4>ARMS:</h4>
-										<p>{playerSelected.infoPlayer.arms}</p>
-									</li>
-								)}
-								{playerSelected.infoPlayer.hands && (
-									<li className="player-card-body-item">
-										<h4>HANDS:</h4>
-										<p>{playerSelected.infoPlayer.hands}</p>
-									</li>
-								)}
-								{playerSelected.infoPlayer.height && (
-									<li className="player-card-body-item">
-										<h4>HEIGTH:</h4>
-										<p>{playerSelected.infoPlayer.height}</p>
-									</li>
-								)}
-								{playerSelected.infoPlayer.weight && (
-									<li className="player-card-body-item">
-										<h4>WEIGHT:</h4>
-										<p>{playerSelected.infoPlayer.weight}</p>
-									</li>
-								)}
-							</ul>
-							<div className="player-card-footer">
-								<h4>HOMETOWN: {playerSelected.hometown.name}</h4>
-								<h4>COLLEGE: {playerSelected.college.name}</h4>
+							<span>{playerSelected.infoCurrentTeam.status}</span>
+						</div>
+						<div className="player-card-image-container">
+							<img
+								src={
+									playerSelected.images.photo !== ""
+										? playerSelected.images.photo
+										: emptyPlayer
+								}
+							/>
+							<div>
+								<img src={playerSelected.infoCurrentTeam.image} />
 							</div>
 						</div>
-					</Tilt>
-				</div>
+						<ul className="player-card-body-container">
+							{playerSelected.infoPlayer.age !== 0 && (
+								<li>
+									<span>age:</span>
+									<span>{playerSelected.infoPlayer.age}</span>
+								</li>
+							)}
+							{playerSelected.infoPlayer.experience !== 0 && (
+								<li>
+									<span>experience:</span>
+									<span>{playerSelected.infoPlayer.experience}</span>
+								</li>
+							)}
+							{playerSelected.infoPlayer.arms && (
+								<li>
+									<span>arms:</span>
+									<span>{playerSelected.infoPlayer.arms}</span>
+								</li>
+							)}
+							{playerSelected.infoPlayer.hands && (
+								<li>
+									<span>hands:</span>
+									<span>{playerSelected.infoPlayer.hands}</span>
+								</li>
+							)}
+							{playerSelected.infoPlayer.height && (
+								<li>
+									<span>height:</span>
+									<span>{playerSelected.infoPlayer.height}</span>
+								</li>
+							)}
+							{playerSelected.infoPlayer.weight && (
+								<li>
+									<span>weight:</span>
+									<span>{playerSelected.infoPlayer.weight}</span>
+								</li>
+							)}
+						</ul>
+						<div className="player-card-footer">
+							{playerSelected.hometown.name && (
+								<span>
+									<b>HOMETOWN:</b> {playerSelected.hometown.name}
+								</span>
+							)}
+							{playerSelected.college.name && (
+								<span>
+									<b>COLLEGE:</b> {playerSelected.college.name}
+								</span>
+							)}
+						</div>
+					</div>
+				</Tilt>
 			)}
 		</div>
 	);

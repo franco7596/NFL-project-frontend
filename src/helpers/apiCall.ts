@@ -1,4 +1,5 @@
 import clienteAxios from "../axios";
+import { getPlayersByIdTeam } from "../redux/types/players/playersTypeData";
 import { filtersGenericPage, loguinData } from "./typesHelpers";
 
 export type infoRequestType = {
@@ -7,7 +8,7 @@ export type infoRequestType = {
 	headers?: {
 		"x-acces-token": string;
 	};
-	data?: filtersGenericPage | loguinData;
+	data?: filtersGenericPage | loguinData | getPlayersByIdTeam;
 };
 
 export default function apiCall(infoRequest: infoRequestType) {

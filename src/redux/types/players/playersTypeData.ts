@@ -41,20 +41,27 @@ export type responseGetPlayerById = {
 	statusText: string;
 	player: playerType;
 };
+export type getPlayersByIdTeam = {
+	status?: string;
+	search_Inpit?: string;
+	id_team: number;
+};
 
 type actionWithoutPayload = {
 	type:
 		| "START_GET_PLAYERS_BY_TEAM"
+		| "START_GET_PLAYERS_BY_TEAM_TABLE"
 		| "ERROR_GET_PLAYERS"
 		| "ERROR_GET_PLAYERS_BY_TEAM"
 		| "START_GET_PLAYER_STATUS"
 		| "ERROR_GET_PLAYER_SELECTED"
+		| "ERROR_GET_PLAYERS_BY_TEAM_TABLE"
 		| "ERROR_GET_PLAYER_STATUS";
 };
 
 export type actionStartGetPlayerById = {
 	type: "START_GET_PLAYER_SELECTED";
-	payload: { id: number };
+	payload: getPlayersByIdTeam;
 };
 export type actionStartGetPlayers = {
 	type: "START_GET_PLAYERS";
@@ -66,7 +73,9 @@ export type actionSuccessfulGetplayersByid = {
 };
 
 export type actionSuccessfulGetplayersByTeam = {
-	type: "SUCCESSFUL_GET_PLAYERS_BY_TEAM";
+	type:
+		| "SUCCESSFUL_GET_PLAYERS_BY_TEAM"
+		| "SUCCESSFUL_GET_PLAYERS_BY_TEAM_TABLE";
 	payload: playerType[];
 };
 export type actionSuccessfulGetplayers = {
