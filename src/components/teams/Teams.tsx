@@ -98,7 +98,7 @@ export default function Teams() {
 				handleSearch={handleSearchInput}
 				placeholder={"TEAM NAME..."}
 			/>
-			<div>
+			<div className="filters-container">
 				<div className="filters-section">
 					{divisions !== null && (
 						<FilterCard
