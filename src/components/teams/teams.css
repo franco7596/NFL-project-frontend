@@ -18,7 +18,6 @@
   margin: 0 40px 40px 40px;
   box-shadow: var(--box-shadow-cards);
   max-width: 350px;
-  /*  */
 }
 .teams-ul {
   display: flex;
@@ -32,7 +31,6 @@
 
 @media (min-width: 700px) {
   .teams-section {
-    grid-template-rows: 150px 90%;
     grid-template-columns: 1fr 1fr;
   }
   .teams-section > span {
@@ -43,6 +41,7 @@
   }
   .teams-ul {
     justify-content: start;
+    height: 100%;
   }
 }
 @media (min-width: 1000px) {
