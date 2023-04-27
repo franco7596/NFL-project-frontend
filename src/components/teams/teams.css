@@ -1,65 +1,66 @@
 .teams-section {
-	display: grid;
-	grid-template-rows: 150px 1fr 100%;
-	overflow: hidden;
+  display: grid;
+  grid-template-rows: 150px 1fr 100%;
+  overflow: hidden;
 }
 .teams-section > span {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .filters-container {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .filters-section {
-	border-radius: 25px;
-	background-color: var(--card-filter-color);
-	padding: 16px 0;
-	margin: 0 40px 40px 40px;
-	box-shadow: var(--box-shadow-cards);
-	max-width: 350px;
+  border-radius: 25px;
+  background-color: var(--card-filter-color);
+  padding: 16px 0;
+  margin: 0 40px 40px 40px;
+  box-shadow: var(--box-shadow-cards);
+  max-width: 350px;
+  /*  */
 }
 .teams-ul {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	padding: 0;
-	gap: 20px;
-	height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  gap: 20px;
+  height: 95%;
 }
 
 @media (min-width: 700px) {
-	.teams-section {
-		grid-template-rows: 150px 90%;
-		grid-template-columns: 1fr 1fr;
-	}
-	.teams-section > span {
-		display: block;
-	}
-	.filters-container {
-		display: block;
-	}
-	.teams-ul {
-		justify-content: start;
-	}
+  .teams-section {
+    grid-template-rows: 150px 90%;
+    grid-template-columns: 1fr 1fr;
+  }
+  .teams-section > span {
+    display: block;
+  }
+  .filters-container {
+    display: block;
+  }
+  .teams-ul {
+    justify-content: start;
+  }
 }
 @media (min-width: 1000px) {
-	.teams-section {
-		grid-template-rows: 150px 90%;
-		grid-template-columns: 1fr 2fr;
-	}
+  .teams-section {
+    grid-template-rows: 150px 90%;
+    grid-template-columns: 1fr 2fr;
+  }
 }
 @media (min-width: 1400px) {
-	.teams-section {
-		grid-template-rows: 150px 90%;
-		grid-template-columns: 1fr 3fr;
-	}
-	.teams-ul {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 15px 20px;
-		padding: 0 30px;
-		align-items: start;
-	}
+  .teams-section {
+    grid-template-rows: 150px 90%;
+    grid-template-columns: 1fr 3fr;
+  }
+  .teams-ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 20px;
+    padding: 0 30px;
+    align-items: start;
+  }
 }
