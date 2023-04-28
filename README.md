@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+## NFL Back-End project
+This project is a front-end application built with React.js written in TypeScript. It uses React-Router, Redux, and Redux-Saga for state management, and Axios to make requests to the back-end of the application. Jest and React-Testing-Library were also used to perform unit tests on the application, ensuring its quality and proper functioning.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The front-end application allows users to view all the NFL teams and players that were scraped from the official website and stored in a PostgreSQL database. Users can view player statistics and their positions on the field, as well as filter them by name or state and sort them by age or experience. Teams can also be filtered by name or division and sorted by their establishment date or their number of wins.
 
-## Available Scripts
+The front-end application has a control section that enables a special request to be made to the back-end. This request is protected using JWT, which is obtained by logging in. The request triggers an update of the application's data by activating a request to scrapy to update the database.
 
-In the project directory, you can run:
+This application is aesthetically pleasing and user-friendly, making it enjoyable for users to navigate. It is deployed on Vercel.
 
-### `npm start`
+## Video
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![NFL_AdobeExpress](https://user-images.githubusercontent.com/54074366/235224509-2cc384da-664d-4495-86e6-eaac4e5e4d26.gif)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Running this project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Open Git terminal.
 
-### `npm run build`
+- Change the current working directory to the location where you want to clone the directory. cd project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Type git clone followed by the project URL.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- git clone https://github.com/franco7596/NFL-project-frontend.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Press Enter to create your local clone.
 
-### `npm run eject`
+> $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY Cloning into Spoon-Knife... remote: Counting objects: 10, done. remote: Compressing objects: 100% (8/8), done. remove: Total 10 (delta 1), reused 10 (delta 1) Unpacking objects: 100% (10/10), done.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Install all necessary dependencies inside the project directory using npm install.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## The link to the webpage.:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[NFL](https://ribotta-franco-nfl.vercel.app/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## My social media:
 
-## Learn More
+- [GitHub](https://github.com/franco7596)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Linkedin](https://www.linkedin.com/in/franco-ribotta-274a211b0/)
