@@ -1,4 +1,4 @@
-## NFL Back-End project
+## NFL Front-end project
 This project is a front-end application built with React.js written in TypeScript. It uses React-Router, Redux, and Redux-Saga for state management, and Axios to make requests to the back-end of the application. Jest and React-Testing-Library were also used to perform unit tests on the application, ensuring its quality and proper functioning.
 
 The front-end application allows users to view all the NFL teams and players that were scraped from the official website and stored in a PostgreSQL database. Users can view player statistics and their positions on the field, as well as filter them by name or state and sort them by age or experience. Teams can also be filtered by name or division and sorted by their establishment date or their number of wins.
