@@ -28,6 +28,8 @@ This application is aesthetically pleasing and user-friendly, making it enjoyabl
 
 - Install all necessary dependencies inside the project directory using npm install.
 
+- Finally, start the project with npm start, which will launch the Expo dashboard in the browser.
+
 ## The link to the webpage.:
 
 [NFL](https://ribotta-franco-nfl.vercel.app/)
